@@ -7,6 +7,8 @@ export const globalColors = StyleSheet.create({
     },
 
     maincolors: {
-        white: {colour: 'FFFFFF'}
+        white: {colour: '#FFFFFF'},
+        grey: {colour: '#BBC3CB'},
+        black: {colour: '#000000'}
     }
 });
