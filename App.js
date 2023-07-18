@@ -3,66 +3,17 @@ import { React, useState } from 'react';
 import { Text, StyleSheet, View, Dimensions, TouchableOpacity} from "react-native";
 import { globalColors } from "./colors";
 import { TextInput } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import  SignUp1  from './screens/SignUp1.js';
+import Login from './screens/Login';
+import AppNavigator from './navigation/AppNavigator';
 
 export default function App() {
-  const { boxWidth } = Dimensions.get('screen');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const handleForgotPassword = () => {
-    console.log("Forgot Password");
-  };
-  const handleLogin = () => {
-    console.log("Log in button pressed");
-  };
-  const handleSignUp = () => {
-    console.log("Sign Up button pressed");
-  };
+
 
   return (
     <NavigationContainer>
-          <View style={styles.bigbox}>
-            <TouchableOpacity onPress={handleSignUp}>
-              <Text style={styles.signupbutton}>Sign Up</Text>
-            </TouchableOpacity>
-            <View>
-              <Text style={styles.title}>Pathbuddy</Text>
-            </View>
-            <View style={[styles.loginbox, { width: boxWidth }]}>
-              <Text style={styles.text1}>Log In</Text>
-              <Text style={styles.text2}>Email</Text>
-              <TextInput
-                  style={styles.textinput1}
-                  placeholder = 'You@Hossein Darda.com'
-                  placeholderTextColor={globalColors.maincolors.black.colour}
-                  value1={email}
-                  onChangeText={setEmail}
-                  autoCapitalize='none'
-              />
-              <Text style={styles.text2}>Password</Text>
-              <TextInput
-                  style={styles.textinput2}
-                  placeholder = '. . . . . . .'
-                  placeholderTextColor={globalColors.maincolors.black.colour}
-                  value1={password}
-                  onChangeText={setPassword}
-                  autoCapitalize='none'
-              />
-              <View>
-                <TouchableOpacity style={styles.button1} onPress={handleForgotPassword}>
-                  <Text style={styles.forgotPassword}>Forgot Password?</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handleLogin}>
-                  <Text style={styles.login}>Log in</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.signupContainer}>
-                <Text style={styles.signupText}>Don't have an account? </Text>
-                <TouchableOpacity onPress={handleSignUp}>
-                  <Text style={styles.signupLink}>Sign Up!</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
+          <AppNavigator/>
     </NavigationContainer>
   );
 }
@@ -76,7 +27,7 @@ const styles = StyleSheet.create ({
     },
   signupbutton:{
     backgroundColor: globalColors.maincolors.white.colour,
-    marginTop: 20,
+    marginTop: 25,
     marginRight: 15,
     marginLeft: 300,
     borderRadius: 10,
