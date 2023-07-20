@@ -5,41 +5,40 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function SignUp3({ route }) {
+export default function SignUp4({ route }) {
     const navigation = useNavigation();
-    const {firstname, lastname } = route.params
-    const [dob, setDob] = useState('');
+    const {firstname, lastname, dob } = route.params
+    const [pronoun, setPronoun] = useState('');
     const handleLogin = () => {
       navigation.navigate('Login');
       console.log("Log in button pressed");
     };
-    const handleSignUp4 = () => {
-        if (dob.trim() !== '') {
-            navigation.navigate('SignUp4', { firstname: firstname, lastname: lastname, dob: dob});
-            console.log("Next button pressed:", firstname, lastname, dob);
+    const handleSignUp5 = () => {
+        if (firstname.trim() !== '') {
+            navigation.navigate('SignUp5', { firstname: firstname, lastname: lastname,dob: dob,pronoun: pronoun});
+            console.log("Next button pressed:", firstname, lastname, dob, pronoun);
         } else {
-            Alert.alert('Please enter your date of birth');
+            Alert.alert('Please enter your pronoun');
         }
     };
     return(
       <View style={styles.bigbox}>
         <View style={styles.title}>
-          <Text style={styles.text1}>When's your brithday?</Text>
+          <Text style={styles.text1}>What are your pronouns?</Text>
         </View>
         <View style={styles.placeholder}>
-          <Text style={styles.text2}>Last Name</Text>
+          <Text style={styles.text2}>Pronouns</Text>
           <TextInput
               style={styles.textinput1}
-              placeholder = '05/09/2007'
+              placeholder = 'They'
               placeholderTextColor={globalColors.maincolors.black.colour}
-              value1={dob}
-              onChangeText={setDob}
+              value1={pronoun}
+              onChangeText={setPronoun}
               autoCapitalize='none'
-              keyboardType='numeric'
           />
         </View>
         <View>
-          <TouchableOpacity onPress={handleSignUp4}>
+          <TouchableOpacity onPress={handleSignUp5}>
             <Text style={styles.next}>Next</Text>
           </TouchableOpacity>
         </View>
@@ -86,7 +85,6 @@ export default function SignUp3({ route }) {
       marginRight: 21,
       height: 48,
       paddingLeft: 16,
-      textAlign: 'center'
     },
     next: {
       marginLeft: 21,

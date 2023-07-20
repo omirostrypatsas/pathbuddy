@@ -1,45 +1,56 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function SignUp3({ route }) {
+export default function SignUp6({ route }) {
     const navigation = useNavigation();
-    const {firstname, lastname } = route.params
-    const [dob, setDob] = useState('');
+    const {firstname, lastname, dob, pronoun, email } = route.params
+    const [password1, setPassword1] = useState('');
+    const [password2, setPassword2] = useState('');
     const handleLogin = () => {
       navigation.navigate('Login');
       console.log("Log in button pressed");
     };
-    const handleSignUp4 = () => {
-        if (dob.trim() !== '') {
-            navigation.navigate('SignUp4', { firstname: firstname, lastname: lastname, dob: dob});
-            console.log("Next button pressed:", firstname, lastname, dob);
+    const handleSignUp7 = () => {
+        if (password1.trim() !== '' || password2.trim() !== '') {
+            if (password1.trim() == password2.trim()){
+                navigation.navigate('Feed', { firstname: firstname, lastname: lastname, dob: dob, pronoun: pronoun, email: email});
+                console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
+            } else {
+                Alert.alert('The passwords do not match');
+            }
         } else {
-            Alert.alert('Please enter your date of birth');
+            Alert.alert('Password should not be empty!');
         }
     };
     return(
       <View style={styles.bigbox}>
         <View style={styles.title}>
-          <Text style={styles.text1}>When's your brithday?</Text>
+          <Text style={styles.text1}>Please enter a valid password.</Text>
         </View>
         <View style={styles.placeholder}>
-          <Text style={styles.text2}>Last Name</Text>
+          <Text style={styles.text2}>Password</Text>
           <TextInput
               style={styles.textinput1}
-              placeholder = '05/09/2007'
               placeholderTextColor={globalColors.maincolors.black.colour}
-              value1={dob}
-              onChangeText={setDob}
+              value1={password1}
+              onChangeText={setPassword1}
               autoCapitalize='none'
-              keyboardType='numeric'
+          />
+          <Text style={styles.text3}>Password</Text>
+          <TextInput
+              style={styles.textinput1}
+              placeholderTextColor={globalColors.maincolors.black.colour}
+              value1={password2}
+              onChangeText={setPassword2}
+              autoCapitalize='none'
           />
         </View>
         <View>
-          <TouchableOpacity onPress={handleSignUp4}>
+          <TouchableOpacity onPress={handleSignUp7}>
             <Text style={styles.next}>Next</Text>
           </TouchableOpacity>
         </View>
@@ -72,11 +83,16 @@ export default function SignUp3({ route }) {
     },
     placeholder: {
       marginLeft: 21,
-      marginTop: 142
+      marginTop: 121
     },
     text2: {
       color: globalColors.maincolors.black.color,
       fontSize: 20,
+    },
+    text3: {
+        color: globalColors.maincolors.black.color,
+        fontSize: 20,
+        marginTop: 28        
     },
     textinput1: {
       borderColor: globalColors.maincolors.white.colour,
@@ -86,12 +102,11 @@ export default function SignUp3({ route }) {
       marginRight: 21,
       height: 48,
       paddingLeft: 16,
-      textAlign: 'center'
     },
     next: {
       marginLeft: 21,
       marginRight: 21,
-      marginTop: 166,
+      marginTop: 74,
       height: 50,
       textAlign: 'center',
       textAlignVertical: 'center',

@@ -1,20 +1,25 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function SignUp2() {
+export default function SignUp2({ route }) {
   const navigation = useNavigation();
+  const {firstname} = route.params
   const [lastname, setLastName] = useState('');
   const handleLogin = () => {
     navigation.navigate('Login');
     console.log("Log in button pressed");
   };
   const handleSignUp3 = () => {
-    navigation.navigate('SignUp3');
-    console.log("Sign Up button pressed");
+    if (lastname.trim() !== '') {
+      navigation.navigate('SignUp3', { firstname: firstname , lastname: lastname });
+      console.log('Next button pressed:', firstname, lastname);
+    } else {
+      Alert.alert('Please enter your last name');
+    }
   };
   return(
     <View style={styles.bigbox}>

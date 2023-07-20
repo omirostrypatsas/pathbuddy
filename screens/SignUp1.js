@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -13,8 +13,12 @@ export default function SignUp1() {
     console.log("Log in button pressed");
   };
   const handleSignUp2 = () => {
-    navigation.navigate('SignUp2');
-    console.log("Sign Up button pressed");
+    if (firstname.trim() !== '') {
+      navigation.navigate('SignUp2', { firstname: firstname });
+      console.log('Next button pressed:', firstname);
+    } else {
+      Alert.alert('Please enter your first name');
+    }
   };
   return(
     <View style={styles.bigbox}>
