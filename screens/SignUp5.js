@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert, KeyboardAvoidingView } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -14,15 +14,15 @@ export default function SignUp5({ route }) {
       console.log("Log in button pressed");
     };
     const handleSignUp6 = () => {
-        if (firstname.trim() !== '') {
-            navigation.navigate('SignUp6', { firstname: firstname, lastname: lastname,dob: dob, pronoun: pronoun,email: email});
+        if (email.trim() !== '') {
+            navigation.navigate('SignUp6', { firstname: firstname, lastname: lastname,dob: dob, pronoun: pronoun, email: email});
             console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
         } else {
             Alert.alert('Please enter your email address');
         }
     };
     return(
-      <View style={styles.bigbox}>
+      <KeyboardAvoidingView style={styles.bigbox} behavior="padding">
         <View style={styles.title}>
           <Text style={styles.text1}>What is your email address?</Text>
         </View>
@@ -48,7 +48,7 @@ export default function SignUp5({ route }) {
             <Text style={styles.signupLink}>Log in!</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
   

@@ -1,42 +1,62 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native-gesture-handler';
+import DateTimePicker from '@react-native-community/datetimepicker'
 
 export default function SignUp3({ route }) {
     const navigation = useNavigation();
     const {firstname, lastname } = route.params
-    const [dob, setDob] = useState('');
+    const [dob, setDob] = useState(new Date());
+    const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const handleDateChange = (event, selectedDate) => {
+        const currentDate = selectedDate || dob;
+        setShowDatePicker(false);
+        setDob(currentDate);
+      };
     const handleLogin = () => {
       navigation.navigate('Login');
       console.log("Log in button pressed");
     };
     const handleSignUp4 = () => {
-        if (dob.trim() !== '') {
-            navigation.navigate('SignUp4', { firstname: firstname, lastname: lastname, dob: dob});
+        const currentDate = new Date();
+        const twelveYearsAgo = new Date(currentDate.getFullYear() - 12, currentDate.getMonth(), currentDate.getDate());
+
+
+        if (dob <= twelveYearsAgo) {
+            const datePart = dob.toISOString().split('T')[0];;
+            navigation.navigate('SignUp4', { firstname: firstname, lastname: lastname, dob: datePart });
             console.log("Next button pressed:", firstname, lastname, dob);
         } else {
-            Alert.alert('Please enter your date of birth');
+            Alert.alert('You must be at least 12 years old to sign up.');
         }
     };
+    const openDatePicker = () => {
+        setShowDatePicker(true);
+      };
+
     return(
       <View style={styles.bigbox}>
         <View style={styles.title}>
           <Text style={styles.text1}>When's your brithday?</Text>
         </View>
         <View style={styles.placeholder}>
-          <Text style={styles.text2}>Last Name</Text>
-          <TextInput
-              style={styles.textinput1}
-              placeholder = '05/09/2007'
-              placeholderTextColor={globalColors.maincolors.black.colour}
-              value1={dob}
-              onChangeText={setDob}
-              autoCapitalize='none'
-              keyboardType='numeric'
+          <Text style={styles.text2}>Date of birth</Text>
+          <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+                <Text style={styles.dateText}>
+                {dob ? dob.toLocaleDateString('en-GB') : 'Select Date'}
+                </Text>
+            </TouchableOpacity>
+            {showDatePicker && (
+          <DateTimePicker
+              value={dob || new Date()}
+              mode="date"
+              display="default"
+              onChange={handleDateChange}
           />
+          )}
         </View>
         <View>
           <TouchableOpacity onPress={handleSignUp4}>
@@ -79,15 +99,23 @@ export default function SignUp3({ route }) {
       fontSize: 20,
     },
     textinput1: {
-      borderColor: globalColors.maincolors.white.colour,
-      borderRadius: 8,
-      borderWidth: 2,
-      marginTop: 13,
-      marginRight: 21,
-      height: 48,
-      paddingLeft: 16,
-      textAlign: 'center'
+
     },
+    dateText: {
+        fontSize: 20,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        marginVertical: 20,
+        color: globalColors.maincolors.black.colour,
+        borderColor: globalColors.maincolors.white.colour,
+        borderRadius: 8,
+        borderWidth: 2,
+        paddingLeft: 16,
+        marginTop: 13,
+        marginRight: 21,
+        height: 48,
+        textAlign: 'center'
+      },
     next: {
       marginLeft: 21,
       marginRight: 21,

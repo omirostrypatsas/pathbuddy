@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { Picker } from '@react-native-picker/picker'
 
 export default function SignUp4({ route }) {
     const navigation = useNavigation();
@@ -14,13 +15,16 @@ export default function SignUp4({ route }) {
       console.log("Log in button pressed");
     };
     const handleSignUp5 = () => {
-        if (firstname.trim() !== '') {
-            navigation.navigate('SignUp5', { firstname: firstname, lastname: lastname,dob: dob,pronoun: pronoun});
+        if (pronoun.trim() !== '') {
+            navigation.navigate('SignUp5', { firstname: firstname, lastname: lastname,dob: dob, pronoun: pronoun});
             console.log("Next button pressed:", firstname, lastname, dob, pronoun);
         } else {
             Alert.alert('Please enter your pronoun');
         }
     };
+    
+    const pronounOptions = ['he/him', 'she/her', 'they/them', 'other'];
+
     return(
       <View style={styles.bigbox}>
         <View style={styles.title}>
@@ -28,14 +32,15 @@ export default function SignUp4({ route }) {
         </View>
         <View style={styles.placeholder}>
           <Text style={styles.text2}>Pronouns</Text>
-          <TextInput
-              style={styles.textinput1}
-              placeholder = 'They'
-              placeholderTextColor={globalColors.maincolors.black.colour}
-              value1={pronoun}
-              onChangeText={setPronoun}
-              autoCapitalize='none'
-          />
+            <Picker
+                style={styles.picker}
+                selectedValue={pronoun}
+                onValueChange={(itemValue, itemIndex) => setPronoun(itemValue)}
+            >
+                {pronounOptions.map((pronounOption) => (
+                    <Picker.Item key={pronounOption} label={pronounOption} value={pronounOption} />
+                ))}
+            </Picker>
         </View>
         <View>
           <TouchableOpacity onPress={handleSignUp5}>
@@ -77,8 +82,8 @@ export default function SignUp4({ route }) {
       color: globalColors.maincolors.black.color,
       fontSize: 20,
     },
-    textinput1: {
-      borderColor: globalColors.maincolors.white.colour,
+    picker: {
+      backgroundColor: globalColors.maincolors.white.colour,
       borderRadius: 8,
       borderWidth: 2,
       marginTop: 13,

@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Alert } from "react-native";
+import { StyleSheet, Text, View, Alert, Image } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +9,9 @@ export default function SignUp2({ route }) {
   const navigation = useNavigation();
   const {firstname} = route.params
   const [lastname, setLastName] = useState('');
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
   const handleLogin = () => {
     navigation.navigate('Login');
     console.log("Log in button pressed");
@@ -19,6 +22,12 @@ export default function SignUp2({ route }) {
       console.log('Next button pressed:', firstname, lastname);
     } else {
       Alert.alert('Please enter your last name');
+    }
+  };
+  const validateLastName = () => {
+    const lettersPattern = /^[A-Za-z]+$/;
+    if (!lastname.match(lettersPattern)) {
+      Alert.alert('Please enter only letters in the first name field');
     }
   };
   return(
@@ -35,6 +44,7 @@ export default function SignUp2({ route }) {
             value1={lastname}
             onChangeText={setLastName}
             autoCapitalize='none'
+            onEndEditing={validateLastName}
         />
       </View>
       <View>

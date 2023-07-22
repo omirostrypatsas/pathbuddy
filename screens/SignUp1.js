@@ -20,6 +20,12 @@ export default function SignUp1() {
       Alert.alert('Please enter your first name');
     }
   };
+  const validateFirstName = () => {
+    const lettersPattern = /^[A-Za-z]+$/;
+    if (!firstname.match(lettersPattern)) {
+      Alert.alert('Please enter only letters in the first name field');
+    }
+  };
   return(
     <View style={styles.bigbox}>
       <View style={styles.title}>
@@ -34,6 +40,7 @@ export default function SignUp1() {
             value1={firstname}
             onChangeText={setFirstName}
             autoCapitalize='none'
+            onEndEditing={validateFirstName}
         />
       </View>
       <View>

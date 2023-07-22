@@ -47,6 +47,7 @@ export default function Login() {
                   value1={password}
                   onChangeText={setPassword}
                   autoCapitalize='none'
+                  secureTextEntry={true}
               />
               <View>
                 <TouchableOpacity style={styles.button1} onPress={handleForgotPassword}>
