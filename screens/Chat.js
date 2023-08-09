@@ -1,32 +1,38 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
 import { globalColors } from "../colors";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('screen');
 
-export default function Feed() {
+export default function Chat() {
 
     const navigation = useNavigation();
 
     return(
 
         <View style={styles.bigbox}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backarrow}>
+                <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
+            </TouchableOpacity>
             <View style={styles.titlebox}>
-                <Text style={styles.titletext}>Feed</Text>
+                <Text style={styles.titletext}>Chat</Text>
             </View>
             <View style={styles.settings}>
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
                 <Feather name="settings" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             </View>
+            <ScrollView>
+
+            </ScrollView>
             <View style={styles.bottombar}>
-                <BottomBar activeRoute="Feed"/>
+                <BottomBar activeRoute="Chat"/>
             </View>
         </View>
     )
@@ -55,12 +61,17 @@ const styles = StyleSheet.create ({
         marginTop: 45
     },
     titlebox: {
-        marginTop: 45,
-        alignItems: 'center'
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: 45
     },
     titletext:{
         fontSize: 20,
         color: globalColors.orange.title.colour,
         textAlign: 'center'
-    }
+    },
+    backarrow: {
+        left: 20,
+        marginTop: 45
+    },
 })

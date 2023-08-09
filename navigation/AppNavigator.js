@@ -8,6 +8,11 @@ import SignUp4 from '../screens/SignUp4.js';
 import SignUp5 from '../screens/SignUp5.js';
 import SignUp6 from '../screens/SignUp6.js';
 import Feed from '../screens/Feed.js';
+import Profile from '../screens/Profile.js';
+import Chat from '../screens/Chat.js';
+import Dashboard from '../screens/Dashboard.js';
+import Settings from '../screens/Settings.js';
+import NewPost from '../screens/NewPost.js'
 
 const Stack = createStackNavigator();
 
@@ -22,7 +27,13 @@ const AppNavigator = () => {
                 <Stack.Screen name="SignUp4" component={SignUp4} options={{ headerShown: false}}/>
                 <Stack.Screen name="SignUp5" component={SignUp5} options={{ headerShown: false}}/>
                 <Stack.Screen name="SignUp6" component={SignUp6} options={{ headerShown: false}}/>
+                {/* Main screens: */}
                 <Stack.Screen name="Feed" component={Feed} options={{ headerShown: false}}/>
+                <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false}}/>
+                <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false}}/>
+                <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: false}}/>
+                <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false}}/>
+                <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false}}/>
             </Stack.Navigator>
     );
 };

@@ -1,30 +1,72 @@
 import { React, useState } from 'react';
-import { Text, StyleSheet, View, Dimensions, TouchableOpacity} from "react-native";
+import { Text, StyleSheet, View, Dimensions, TouchableOpacity, Alert, AsyncStorage} from "react-native";
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import AuthService from "../services/auth.service";
+import axios from 'axios'
+
 
 export default function Login() {
 
     const { boxWidth } = Dimensions.get('screen');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState('');
     const navigation = useNavigation();
+
     const handleForgotPassword = () => {
         console.log("Forgot Password");
     };
-    const handleLogin = () => {
-        console.log("Log in button pressed");
+
+    const handleLogin = (e) => {
+      e.preventDefault();
+
+      setMessage("");
+      setLoading(true);
+
+        if (email === '' || password === '') {
+          Alert.alert('Error', 'Please enter both email and password');
+        } else {
+          console.log(email,password)
+          AuthService.login(email, password).then(
+            () => {
+              navigate("/profile");
+              window.location.reload();
+            },
+            (error) => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+    
+              setLoading(false);
+              setMessage(resMessage);
+            }
+          );
+          // if (response.status === 201) {
+          //   alert(` You have created: ${JSON.stringify(response.data)}`);
+          // } else {
+          //   throw new Error("An error has occurred");
+          // }
+      }
     };
+
     const handleSignUp1 = () => {
-        navigation.navigate('SignUp1');
+        navigation.navigate('Feed');
         console.log("Sign Up button pressed");
     };
+
     return(
         <View style={styles.bigbox}>
+            <View style={styles.signupbutton}> 
             <TouchableOpacity onPress={handleSignUp1}>
-              <Text style={styles.signupbutton}>Sign Up</Text>
+              <Text style={styles.signupbuttontext}>Sign Up</Text>
             </TouchableOpacity>
+            </View>
             <View>
               <Text style={styles.title}>Pathbuddy</Text>
             </View>
@@ -38,6 +80,7 @@ export default function Login() {
                   value1={email}
                   onChangeText={setEmail}
                   autoCapitalize='none'
+                  keyboardType='email-address'
               />
               <Text style={styles.text2}>Password</Text>
               <TextInput
@@ -53,9 +96,11 @@ export default function Login() {
                 <TouchableOpacity style={styles.button1} onPress={handleForgotPassword}>
                   <Text style={styles.forgotPassword}>Forgot Password?</Text>
                 </TouchableOpacity>
+                <View style={styles.login}>
                 <TouchableOpacity onPress={handleLogin}>
-                  <Text style={styles.login}>Log in</Text>
+                  <Text style={styles.logintext}>Log in</Text>
                 </TouchableOpacity>
+                </View>
               </View>
               <View style={styles.signupContainer}>
                 <Text style={styles.signupText}>Don't have an account? </Text>
@@ -77,14 +122,17 @@ const styles = StyleSheet.create ({
       },
     signupbutton:{
       backgroundColor: globalColors.maincolors.white.colour,
-      marginTop: 25,
+      marginTop: 35,
       marginRight: 15,
       marginLeft: 300,
       borderRadius: 10,
       height:40,
+    },
+    signupbuttontext: {
       textAlignVertical: 'center',
       textAlign: 'center',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      paddingTop: 9
     },
     title: {
       marginTop: 60,
@@ -96,7 +144,7 @@ const styles = StyleSheet.create ({
         flex: 2,
         backgroundColor: globalColors.maincolors.white.colour,
         marginBottom: 0,
-        marginTop: 154,
+        marginTop: 144,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15
     },
@@ -155,11 +203,14 @@ const styles = StyleSheet.create ({
       marginRight: 35,
       marginTop: 39,
       height: 50,
+      borderRadius: 10,
+    },
+    logintext: {
       textAlign: 'center',
       textAlignVertical: 'center',
-      borderRadius: 10,
       color: globalColors.maincolors.white.colour,
-      fontSize: 16
+      fontSize: 16,
+      paddingTop: 14
     },
     signupContainer: {
       flexDirection: 'row',

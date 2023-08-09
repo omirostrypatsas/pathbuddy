@@ -35,6 +35,7 @@ export default function SignUp5({ route }) {
               value1={email}
               onChangeText={setEmail}
               autoCapitalize='none'
+              keyboardType='email-address'
           />
         </View>
         <View>
