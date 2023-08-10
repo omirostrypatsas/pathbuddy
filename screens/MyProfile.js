@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -10,9 +10,11 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('screen');
 
-export default function Profile() {
+export default function MyProfile() {
 
     const navigation = useNavigation();
+    let firstname = user.firstname
+    let lastname = user.lastname
 
     return(
 
@@ -21,15 +23,18 @@ export default function Profile() {
                 <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             <View style={styles.titlebox}>
-                <Text style={styles.titletext}>Profile</Text>
+                <Text style={styles.titletext}>{firstname +' '+ lastname}</Text>
             </View>
             <View style={styles.settings}>
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
                 <Feather name="settings" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             </View>
+            <View style={styles.profileinfo}>
+                <Image source={user.image} style={styles.image}/>
+            </View>
             <View style={styles.bottombar}>
-                <BottomBar activeRoute="Profile"/>
+                <BottomBar activeRoute="MyProfile"/>
             </View>
         </View>
     )
@@ -71,4 +76,19 @@ const styles = StyleSheet.create ({
         left: 20,
         marginTop: 45
     },
+    profileinfo: {
+        marginTop: 40,
+    },
+    image: {
+        height: 92,
+        width: 92
+    }
 })
+
+const user = {
+    image: require('../assets/stick_man.jpg'),
+    firstname: 'Hossein',
+    lastname: 'Darda',
+    uni: '',
+    bio: '',
+}

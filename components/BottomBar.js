@@ -26,8 +26,8 @@ const BottomBar = ({ activeRoute }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.othericon}>
                 <MaterialCommunityIcons name="atom" size={40} color={activeRoute === 'Dashboard' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                <Ionicons name="person-circle-outline" size={40} color={activeRoute === 'Profile' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
+            <TouchableOpacity onPress={() => navigation.navigate('MyProfile')}>
+                <Ionicons name="person-circle-outline" size={40} color={activeRoute === 'MyProfile' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
             </TouchableOpacity>
         </View>
     );

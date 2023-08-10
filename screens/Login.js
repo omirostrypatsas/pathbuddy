@@ -4,7 +4,7 @@ import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import AuthService from "../services/auth.service";
-import axios from 'axios'
+import axios from 'axios';
 
 
 export default function Login() {
@@ -22,36 +22,29 @@ export default function Login() {
 
     const handleLogin = (e) => {
       e.preventDefault();
-
+  
       setMessage("");
       setLoading(true);
-
-        if (email === '' || password === '') {
-          Alert.alert('Error', 'Please enter both email and password');
-        } else {
-          console.log(email,password)
-          AuthService.login(email, password).then(
-            () => {
-              navigate("/profile");
-              window.location.reload();
-            },
-            (error) => {
-              const resMessage =
-                (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
-                error.message ||
-                error.toString();
-    
-              setLoading(false);
-              setMessage(resMessage);
-            }
-          );
-          // if (response.status === 201) {
-          //   alert(` You have created: ${JSON.stringify(response.data)}`);
-          // } else {
-          //   throw new Error("An error has occurred");
-          // }
+  
+      if (checkBtn.current.context._errors.length === 0) {
+        AuthService.login(username, password).then(
+          () => {
+            navigation.navigate('Feed');
+          },
+          (error) => {
+            const resMessage =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+  
+            setLoading(false);
+            setMessage(resMessage);
+          }
+        );
+      } else {
+        setLoading(false);
       }
     };
 
