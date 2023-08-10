@@ -10,7 +10,11 @@ export const globalColors = StyleSheet.create({
     grey: {
         greyborder: {colour: '#ECF0F4'},
         greyarrow: {colour: '#B5C4DB'},
-        outline: {colour: '#E4EBEC'}
+        outline: {colour: '#E4EBEC'},
+        profilepupil: {colour: '#81999e'},
+        buttontext: {colour: '#52697e'},
+        border: {colour: '#DCDEE0'},
+        buttonchangeimage: {colour: '#E9ECEF'}
 
     },
 
