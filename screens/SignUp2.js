@@ -47,9 +47,9 @@ export default function SignUp2({ route }) {
             onEndEditing={validateLastName}
         />
       </View>
-      <View>
+      <View style={styles.next}>
         <TouchableOpacity onPress={handleSignUp3}>
-          <Text style={styles.next}>Next</Text>
+          <Text style={styles.nexttext}>Next</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.signupContainer}>
@@ -101,14 +101,18 @@ const styles = StyleSheet.create ({
     marginRight: 21,
     marginTop: 166,
     height: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
     borderRadius: 10,
-    color: globalColors.orange.background.colour,
     backgroundColor: globalColors.maincolors.white.colour,
     borderColor: globalColors.maincolors.white.colour,
     borderWidth: 2,
     fontSize: 16
+  },
+  nexttext: {
+    textAlign: 'center',
+    paddingTop: 13,
+    fontSize: 14,
+    fontWeight: '600',
+    color: globalColors.orange.background.colour
   },
   signupContainer: {
     flexDirection: 'row',

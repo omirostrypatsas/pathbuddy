@@ -14,11 +14,13 @@ export default function SignUp5({ route }) {
       console.log("Log in button pressed");
     };
     const handleSignUp6 = () => {
-        if (email.trim() !== '') {
-            navigation.navigate('SignUp6', { firstname: firstname, lastname: lastname,dob: dob, pronoun: pronoun, email: email});
-            console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
-        } else {
+        if (email.trim() == '') {
             Alert.alert('Please enter your email address');
+        } else if (email.includes('@')) {
+          navigation.navigate('SignUp6', { firstname: firstname, lastname: lastname,dob: dob, pronoun: pronoun, email: email});
+          console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
+        } else {
+          Alert.alert('Please enter a valid email address');
         }
     };
     return(
@@ -38,9 +40,9 @@ export default function SignUp5({ route }) {
               keyboardType='email-address'
           />
         </View>
-        <View>
+        <View style={styles.next}>
           <TouchableOpacity onPress={handleSignUp6}>
-            <Text style={styles.next}>Next</Text>
+            <Text style={styles.nexttext}>Next</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
@@ -92,14 +94,18 @@ export default function SignUp5({ route }) {
       marginRight: 21,
       marginTop: 166,
       height: 50,
-      textAlign: 'center',
-      textAlignVertical: 'center',
       borderRadius: 10,
-      color: globalColors.orange.background.colour,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.maincolors.white.colour,
       borderWidth: 2,
       fontSize: 16
+    },
+    nexttext: {
+      textAlign: 'center',
+      paddingTop: 13,
+      fontSize: 14,
+      fontWeight: '600',
+      color: globalColors.orange.background.colour
     },
     signupContainer: {
       flexDirection: 'row',

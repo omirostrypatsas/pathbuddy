@@ -6,19 +6,27 @@ import { useNavigation } from '@react-navigation/native';
 import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
+import DeleteAccount from '../modals/DeleteAccount';
+import LogoutModal from '../modals/LogoutModal';
 
 const { width } = Dimensions.get('screen');
 
 export default function Settings() {
 
     const navigation = useNavigation();
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [isModalVisible2, setModalVisible2] = useState(false);
 
-    const handleLogout = () => {
-        console.log("Log out button pressed");
-    };
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+      };
+    
+    const toggleModal2 = () => {
+        setModalVisible2(!isModalVisible2);
+    }
 
-    const settingoption1 =({ icon, title, caption}) => (
-        <TouchableOpacity style={styles.settingbutton}>
+    const settingoption1 =({ icon, title, caption, onpress}) => (
+        <TouchableOpacity style={styles.settingbutton} onPress={onpress}>
                 <Ionicons name={icon} size={24} style={styles.icon}/>
                 <View style={styles.buttontext}>
                     <Text style={[fontWeight= 'bold', fontSize=18]} >{title}</Text>
@@ -28,8 +36,8 @@ export default function Settings() {
         </TouchableOpacity>
     );
 
-    const settingoption2 =({ icon, title, caption}) => (
-        <TouchableOpacity style={styles.settingbutton}>
+    const settingoption2 =({ icon, title, caption, onpress}) => (
+        <TouchableOpacity style={styles.settingbutton} onPress={onpress}>
                 <AntDesign name={icon} size={24} style={styles.icon}/>
                 <View style={styles.buttontext}>
                     <Text style={[fontWeight= 'bold', fontSize=18]} >{title}</Text>
@@ -52,34 +60,42 @@ export default function Settings() {
                     {settingoption1({
                         icon: 'person-outline',
                         title: 'Account',
-                        caption: 'Privacy, Change Name'
+                        caption: 'Privacy, Change Name',
+                        onpress: ''
                     })}
                     {settingoption2({
                         icon: 'lock',
                         title: 'Security',
-                        caption: 'Change password'
+                        caption: 'Change password',
+                        onpress: ''
                     })}
                     {settingoption1({
                         icon: 'notifications-outline',
                         title: 'Notifications',
-                        caption: 'Message, group, ringtone'
+                        caption: 'Message, group, ringtone',
+                        onpress: ''
                     })}
                     {settingoption2({
                         icon: 'questioncircleo',
                         title: 'Help',
-                        caption: 'Help center, contact us, privacy policy'
+                        caption: 'Help center, contact us, privacy policy',
+                        onpress: ''
                     })}
                     {settingoption1({
                         icon: 'people-outline',
                         title: 'About Pathbuddy',
-                        caption: 'Information about Pathbuddy'
+                        caption: 'Information about Pathbuddy',
+                        onpress: ''
                     })}
                     {settingoption2({
                         icon: 'deleteuser',
                         title: 'Delect Account',
-                        caption: 'Permanently delete your account'
+                        caption: 'Permanently delete your account',
+                        onpress: toggleModal
                     })}
-                    <TouchableOpacity onPress={handleLogout} style={styles.logoutbutton}>
+                    <DeleteAccount isVisible={isModalVisible} toggleModal={toggleModal} />
+                    <TouchableOpacity onPress={toggleModal2} style={styles.logoutbutton}>
+                    <LogoutModal isVisible={isModalVisible2} toggleModal={toggleModal2}/>
                         <Text style={styles.logouttext}>Log out</Text>
                     </TouchableOpacity>
                 

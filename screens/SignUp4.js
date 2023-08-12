@@ -9,7 +9,7 @@ import { Picker } from '@react-native-picker/picker'
 export default function SignUp4({ route }) {
     const navigation = useNavigation();
     const {firstname, lastname, dob } = route.params
-    const [pronoun, setPronoun] = useState('');
+    const [pronoun, setPronoun] = useState('he/him');
     const handleLogin = () => {
       navigation.navigate('Login');
       console.log("Log in button pressed");
@@ -42,9 +42,9 @@ export default function SignUp4({ route }) {
                 ))}
             </Picker>
         </View>
-        <View>
-          <TouchableOpacity onPress={handleSignUp5}>
-            <Text style={styles.next}>Next</Text>
+        <View style={styles.next}>
+          <TouchableOpacity  onPress={handleSignUp5}>
+            <Text style={styles.nexttext}>Next</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
@@ -66,7 +66,7 @@ export default function SignUp4({ route }) {
       },
     title: {
       alignSelf: 'center',
-      marginTop:158,
+      marginTop: 108,
       width: 261
     },
     text1: {
@@ -83,9 +83,6 @@ export default function SignUp4({ route }) {
       fontSize: 20,
     },
     picker: {
-      backgroundColor: globalColors.maincolors.white.colour,
-      borderRadius: 8,
-      borderWidth: 2,
       marginTop: 13,
       marginRight: 21,
       height: 48,
@@ -94,16 +91,20 @@ export default function SignUp4({ route }) {
     next: {
       marginLeft: 21,
       marginRight: 21,
-      marginTop: 166,
+      marginTop: 216,
       height: 50,
-      textAlign: 'center',
-      textAlignVertical: 'center',
       borderRadius: 10,
-      color: globalColors.orange.background.colour,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.maincolors.white.colour,
       borderWidth: 2,
       fontSize: 16
+    },
+    nexttext: {
+      textAlign: 'center',
+      paddingTop: 13,
+      fontSize: 14,
+      fontWeight: '600',
+      color: globalColors.orange.background.colour
     },
     signupContainer: {
       flexDirection: 'row',

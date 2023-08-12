@@ -50,6 +50,7 @@ export default function SignUp6({ route }) {
             <TextInput
                 style={styles.textinput1}
                 placeholderTextColor={globalColors.maincolors.black.colour}
+                placeholder = '........'
                 value1={password1}
                 onChangeText={setPassword1}
                 autoCapitalize='none'
@@ -70,6 +71,7 @@ export default function SignUp6({ route }) {
             <TextInput
                 style={styles.textinput1}
                 placeholderTextColor={globalColors.maincolors.black.colour}
+                placeholder = '........'
                 value1={password2}
                 onChangeText={setPassword2}
                 autoCapitalize='none'
@@ -85,9 +87,9 @@ export default function SignUp6({ route }) {
           </TouchableOpacity>
           </View>
         </View>
-        <View>
+        <View style={styles.next}>
           <TouchableOpacity onPress={handleSignUp7}>
-            <Text style={styles.next}>Next</Text>
+            <Text style={styles.nexttext}>Next</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
@@ -140,6 +142,7 @@ export default function SignUp6({ route }) {
       marginTop: 13,
       height: 48,
       paddingLeft: 16,
+      paddingBottom: 8,
       flex: 1
     },
     textInputContainer: {
@@ -157,16 +160,20 @@ export default function SignUp6({ route }) {
     next: {
       marginLeft: 21,
       marginRight: 21,
-      marginTop: 145,
+      marginTop: 166,
       height: 50,
-      textAlign: 'center',
-      textAlignVertical: 'center',
       borderRadius: 10,
-      color: globalColors.orange.background.colour,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.maincolors.white.colour,
       borderWidth: 2,
       fontSize: 16
+    },
+    nexttext: {
+      textAlign: 'center',
+      paddingTop: 13,
+      fontSize: 14,
+      fontWeight: '600',
+      color: globalColors.orange.background.colour
     },
     signupContainer: {
       flexDirection: 'row',

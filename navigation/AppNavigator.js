@@ -12,7 +12,9 @@ import MyProfile from '../screens/MyProfile.js';
 import Chat from '../screens/Chat.js';
 import Dashboard from '../screens/Dashboard.js';
 import Settings from '../screens/Settings.js';
-import NewPost from '../screens/NewPost.js'
+import NewPost from '../screens/NewPost.js';
+import BuddyProfile from '../screens/BuddyProfile.js';
+import PathProfile from '../screens/PathProfile.js'
 
 const Stack = createStackNavigator();
 
@@ -32,8 +34,11 @@ const AppNavigator = () => {
                 <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false}}/>
                 <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false}}/>
                 <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: false}}/>
-                <Stack.Screen name="MyProfile" component={MyProfile} options={{ headerShown: false}}/>
                 <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false}}/>
+                {/* Profile screens: */}
+                <Stack.Screen name="MyProfile" component={MyProfile} options={{ headerShown: false}}/>
+                <Stack.Screen name="PathProfile" component={PathProfile} options={{ headerShown: false}}/>
+                <Stack.Screen name="BuddyProfile" component={BuddyProfile} options={{ headerShown: false}}/>
             </Stack.Navigator>
     );
 };

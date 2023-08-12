@@ -6,7 +6,7 @@ import { globalColors } from '../colors';
 
 const { width } = Dimensions.get('screen');
 
-const HandlingImage = () => {
+const HandlingImageModal = () => {
     const [image, setImage] = useState(null);
     const [image2, setImage2] = useState(null);
   
@@ -77,33 +77,32 @@ const HandlingImage = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'row',
+      flexDirection: 'column',
       padding: 10,
     },
     image: {
-      //position: 'absolute',
-        height: width,
-        width: width,
+        position: 'absolute',
+    height: 150,
+    width: 150,
       resizeMode: 'contain',
-      marginTop: -200,
-      marginLeft: -10
-      //marginLeft: 25
+      //marginTop: -200,
+      alignSelf: 'center'
     },
     button1: {
       //position: 'absolute',
-      marginTop: 50,
-      marginLeft: 15,
-      backgroundColor: globalColors.orange.background.colour,
+      marginTop: 15,
+      //marginLeft: 15,
+      backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.orange.background.colour,
       borderWidth: 2,
       height: 60,
     },
     button2: {
       //position: 'absolute',
-      marginTop: 50,
-      marginLeft: 15,
-      right: 10,
-      backgroundColor: globalColors.orange.background.colour,
+      marginTop: 5,
+      //marginLeft: 15,
+      //right: 10,
+      backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.orange.background.colour,
       borderWidth: 2,
       height: 60,
@@ -117,5 +116,4 @@ const HandlingImage = () => {
     }
   });
   
-  export default HandlingImage;
-  
+  export default HandlingImageModal;

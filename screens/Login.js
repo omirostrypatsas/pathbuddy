@@ -22,12 +22,13 @@ export default function Login() {
 
     const handleLogin = (e) => {
       e.preventDefault();
-  
+      console.log('Log in button pressed')
       setMessage("");
       setLoading(true);
   
-      if (checkBtn.current.context._errors.length === 0) {
-        AuthService.login(username, password).then(
+      if (email !== '' && password !== '' ) {
+        console.log(email,password)
+        AuthService.login(email, password).then(
           () => {
             navigation.navigate('Feed');
           },

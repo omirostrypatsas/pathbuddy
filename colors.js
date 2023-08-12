@@ -22,6 +22,7 @@ export const globalColors = StyleSheet.create({
         white: {colour: '#FFFFFF'},
         grey: {colour: '#BBC3CB'},
         black: {colour: '#000000'},
+        red: {colour: '#ff0000'}
         
     }
 });

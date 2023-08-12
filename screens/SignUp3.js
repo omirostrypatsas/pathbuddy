@@ -44,7 +44,7 @@ export default function SignUp3({ route }) {
         </View>
         <View style={styles.placeholder}>
           <Text style={styles.text2}>Date of birth</Text>
-          <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+          <TouchableOpacity style={styles.date} onPress={() => setShowDatePicker(true)}>
                 <Text style={styles.dateText}>
                 {dob ? dob.toLocaleDateString('en-GB') : 'Select Date'}
                 </Text>
@@ -58,9 +58,9 @@ export default function SignUp3({ route }) {
           />
           )}
         </View>
-        <View>
-          <TouchableOpacity onPress={handleSignUp4}>
-            <Text style={styles.next}>Next</Text>
+        <View style={styles.next}>
+          <TouchableOpacity  onPress={handleSignUp4}>
+            <Text style={styles.nexttext}>Next</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
@@ -101,34 +101,37 @@ export default function SignUp3({ route }) {
     textinput1: {
 
     },
+    date:{
+      borderColor: globalColors.maincolors.white.colour,
+      borderRadius: 8,
+      borderWidth: 2,
+      marginTop: 13,
+      marginRight: 21,
+      height: 48,
+    },
     dateText: {
-        fontSize: 20,
+        fontSize: 18,
+        fontWeight: '500',
         textAlign: 'center',
-        textAlignVertical: 'center',
-        marginVertical: 20,
-        color: globalColors.maincolors.black.colour,
-        borderColor: globalColors.maincolors.white.colour,
-        borderRadius: 8,
-        borderWidth: 2,
-        paddingLeft: 16,
-        marginTop: 13,
-        marginRight: 21,
-        height: 48,
-        textAlign: 'center'
+        paddingTop: 10
       },
     next: {
       marginLeft: 21,
       marginRight: 21,
       marginTop: 166,
       height: 50,
-      textAlign: 'center',
-      textAlignVertical: 'center',
       borderRadius: 10,
-      color: globalColors.orange.background.colour,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.maincolors.white.colour,
       borderWidth: 2,
       fontSize: 16
+    },
+    nexttext: {
+      textAlign: 'center',
+      paddingTop: 13,
+      fontSize: 14,
+      fontWeight: '600',
+      color: globalColors.orange.background.colour
     },
     signupContainer: {
       flexDirection: 'row',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const login = (email, password) => {
-
+    console.log('pelle m')
     return axios
         .post('http://192.168.1.254:8080/api/auth/signin', {
             email,

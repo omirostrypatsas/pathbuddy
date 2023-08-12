@@ -3,14 +3,16 @@ import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
-import { Feather, Ionicons } from '@expo/vector-icons';
+import { Feather, Ionicons, Entypo } from '@expo/vector-icons';
 import EditBioAndUni from '../modals/EditBioAndUni';
 import EditProfilePic from '../modals/EditProfilePic'
 
 const { width } = Dimensions.get('screen');
 
-export default function MyProfile() {
+export default function PathProfile() {
 
     const navigation = useNavigation();
     let firstname = user.firstname
@@ -23,12 +25,6 @@ export default function MyProfile() {
     const toggleModal2 = () => {
         setModalVisible2(!isModalVisible2);
     };
-    const handleBuddies = () => {
-        navigation.navigate('BuddyProfile')
-      };
-    const handlePaths = () => {
-        navigation.navigate('PathProfile')
-    };
 
     return(
 
@@ -37,7 +33,7 @@ export default function MyProfile() {
                 <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             <View style={styles.titlebox}>
-                <Text style={styles.titletext}>{firstname +' '+ lastname}</Text>
+                <Text style={styles.titletext}>Path Profile</Text>
             </View>
             <View style={styles.settings}>
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
@@ -47,32 +43,34 @@ export default function MyProfile() {
             <View style={styles.profileinfo}>
                 <Image source={user.image} style={styles.image}/>
                 <View style={styles.userinfo}>
-                    <Text style={styles.firstandlastnames}>{firstname +' '+ lastname}</Text>
-                    <View style={styles.uniinfo}>
-                        {user.uni && <Text style={styles.pupiltext}>Pupil at: </Text>}
-                        {user.uni && <Text style={styles.unitext}>@{user.uni}</Text>}
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.firstandlastnames}>{firstname +' '+ lastname}</Text>
+                        <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} />
                     </View>
-                    {user.bio && <Text style={styles.biotext}>{user.bio}</Text>}
+                    <View style={styles.uniinfo}>
+                        {user.path && <Text style={styles.pupiltext}>Path: </Text>}
+                        {user.path && <Text style={styles.unitext}>@{user.path}</Text>}
+                    </View>
                 </View>
             </View>
             <View style={styles.friendsinfo}>
-                <TouchableOpacity style={styles.button1} onPress={handleBuddies}>
+                <TouchableOpacity style={styles.button1}>
                     <Text style={styles.buttontext}>Buddies</Text>
                     <Text style={styles.number}>{user.buddies}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button2} onPress={handlePaths}>
+                <TouchableOpacity style={styles.button2}>
                     <Text style={styles.buttontext}>Paths</Text>
                     <Text style={styles.number}>{user.paths}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.friendsinfo}>
-                <TouchableOpacity style={styles.editprofileuni} onPress={toggleModal}>
+                <TouchableOpacity style={styles.follow} onPress={toggleModal}>
                 <EditBioAndUni isVisible={isModalVisible} toggleModal={toggleModal} />
-                    <Text style={styles.editprofileunitext}>Edit uni or bio</Text>
+                    <Text style={styles.followtext}>Follow</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.editprofilepic} onPress={toggleModal2}>
+                <TouchableOpacity style={styles.chat} onPress={toggleModal2}>
                 <EditProfilePic isVisible={isModalVisible2} toggleModal={toggleModal2} />
-                    <Text style={styles.editprofilepictext}>Edit profile picture</Text>
+                    <Text style={styles.chattext}>Chat</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.postsbox}>
@@ -139,6 +137,7 @@ const styles = StyleSheet.create ({
     firstandlastnames: {
         fontSize: 19,
         fontWeight: '700',
+        marginRight: 4
     },
     uniinfo: {
         flexDirection: 'row', 
@@ -176,26 +175,26 @@ const styles = StyleSheet.create ({
         width:100,
         marginLeft: 45
     },
-    editprofileuni: {
+    follow: {
         backgroundColor: globalColors.orange.background.colour,
         height: 45,
-        width: 100,
+        width: 210,
         borderRadius: 10,
     },
-    editprofileunitext: {
+    followtext: {
         color: globalColors.maincolors.white.colour,
         fontSize: 14,
         textAlign: 'center',
         paddingTop: 10,
     },
-    editprofilepic: {
+    chat: {
         marginLeft: 15,
         backgroundColor: globalColors.grey.buttonchangeimage.colour,
         height: 45,
-        width: 150,
+        width: 90,
         borderRadius: 10,
     },
-    editprofilepictext: {
+    chattext: {
         color: globalColors.maincolors.black.colour,
         textAlign: 'center',
         paddingTop: 10
@@ -217,11 +216,10 @@ const styles = StyleSheet.create ({
 })
 
 const user = {
-    image: require('../assets/no-profile-picture-icon-18.jpg'),
-    firstname: 'Hossein',
-    lastname: 'Darda',
-    uni: 'geia',
-    bio: 'eimai vlaks',
+    image: require('../assets/stick_man.jpg'),
+    firstname: 'Computer',
+    lastname: 'Science',
+    path: 'Sciences',
     buddies: 50,
     paths: 7
 }
