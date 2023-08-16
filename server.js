@@ -15,6 +15,14 @@ app.get("/", (req,res) => {
   res.json({ message: "Weclome to JWT Authentication application"})
 });
 
+app.get("/test", (req,res) => {
+  res.send({ message: "Weclome to JWT Authentication application"})
+})
+
+app.get("/", (req,res) => {
+  res.send({ message: "Weclome to JWT Authentication application"})
+});
+
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
 

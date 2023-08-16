@@ -1,11 +1,11 @@
-import { React, useState } from 'react';
-import { Text, StyleSheet, View, Dimensions, TouchableOpacity, Alert, AsyncStorage} from "react-native";
+import { React, useState, useEffect } from 'react';
+import { Text, StyleSheet, View, Dimensions, TouchableOpacity} from "react-native";
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import AuthService from "../services/auth.service";
+import Api from "../services/api";
 import axios from 'axios';
-
 
 export default function Login() {
 
@@ -15,6 +15,7 @@ export default function Login() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState('');
     const navigation = useNavigation();
+    const API_URL = "http://192.168.1.122:8080"
 
     const handleForgotPassword = () => {
         console.log("Forgot Password");
@@ -53,6 +54,19 @@ export default function Login() {
         navigation.navigate('Feed');
         console.log("Sign Up button pressed");
     };
+
+    const fetchApi = async () => {
+      try {
+        const res = await axios.get(API_URL + "/test")
+        console.log('api working');
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    useEffect(() => {
+      fetchApi();
+    }, [])
 
     return(
         <View style={styles.bigbox}>

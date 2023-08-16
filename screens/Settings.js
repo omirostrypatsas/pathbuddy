@@ -8,6 +8,9 @@ import BottomBar from '../components/BottomBar';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import DeleteAccount from '../modals/DeleteAccount';
 import LogoutModal from '../modals/LogoutModal';
+import ChangePassword from '../modals/ChangePassword';
+import { KeyboardAvoidingView } from 'react-native';
+
 
 const { width } = Dimensions.get('screen');
 
@@ -16,6 +19,7 @@ export default function Settings() {
     const navigation = useNavigation();
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModalVisible2, setModalVisible2] = useState(false);
+    const [isModalVisible3, setModalVisible3] = useState(false);
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
@@ -23,6 +27,26 @@ export default function Settings() {
     
     const toggleModal2 = () => {
         setModalVisible2(!isModalVisible2);
+    }
+
+    const toggleModal3 = () => {
+        setModalVisible3(!isModalVisible3);
+    }
+
+    const handleAccount = () => {
+        navigation.navigate('Settings')
+    }
+
+    const handleNotifications = () => {
+        navigation.navigate('Settings')
+    }
+
+    const handleHelp = () => {
+        navigation.navigate('Settings')
+    }
+
+    const handlePathbuddy = () => {
+        navigation.navigate('Settings')
     }
 
     const settingoption1 =({ icon, title, caption, onpress}) => (
@@ -48,7 +72,6 @@ export default function Settings() {
     );
 
     return(
-
         <View style={styles.bigbox}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backarrow}>
                     <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
@@ -61,31 +84,31 @@ export default function Settings() {
                         icon: 'person-outline',
                         title: 'Account',
                         caption: 'Privacy, Change Name',
-                        onpress: ''
+                        onpress: handleAccount
                     })}
                     {settingoption2({
                         icon: 'lock',
                         title: 'Security',
                         caption: 'Change password',
-                        onpress: ''
+                        onpress: toggleModal3
                     })}
                     {settingoption1({
                         icon: 'notifications-outline',
                         title: 'Notifications',
                         caption: 'Message, group, ringtone',
-                        onpress: ''
+                        onpress: handleNotifications
                     })}
                     {settingoption2({
                         icon: 'questioncircleo',
                         title: 'Help',
                         caption: 'Help center, contact us, privacy policy',
-                        onpress: ''
+                        onpress: handleHelp
                     })}
                     {settingoption1({
                         icon: 'people-outline',
                         title: 'About Pathbuddy',
                         caption: 'Information about Pathbuddy',
-                        onpress: ''
+                        onpress: handlePathbuddy
                     })}
                     {settingoption2({
                         icon: 'deleteuser',
@@ -93,6 +116,7 @@ export default function Settings() {
                         caption: 'Permanently delete your account',
                         onpress: toggleModal
                     })}
+                    <ChangePassword isVisible={isModalVisible3} toggleModal={toggleModal3}/>
                     <DeleteAccount isVisible={isModalVisible} toggleModal={toggleModal} />
                     <TouchableOpacity onPress={toggleModal2} style={styles.logoutbutton}>
                     <LogoutModal isVisible={isModalVisible2} toggleModal={toggleModal2}/>
@@ -101,7 +125,7 @@ export default function Settings() {
                 
             </ScrollView>
             <View style={styles.bottombar}>
-                <BottomBar/>
+                {isModalVisible3 ? null : <BottomBar />}
             </View>
         </View>
     )
@@ -112,7 +136,7 @@ const styles = StyleSheet.create ({
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
         //marginTop: 324,
-        marginBottom: 0 
+        marginBottom: 0, 
       },
     bottombar: {
         position: 'absolute',

@@ -79,7 +79,7 @@ export default function MyProfile() {
                 <Text style={styles.poststext}>Posts</Text>
             </View>
             <View style={styles.bottombar}>
-                <BottomBar activeRoute="MyProfile"/>
+                {isModalVisible ? null : <BottomBar activeRoute={'MyProfile'} />}
             </View>
         </View>
     )

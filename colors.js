@@ -14,7 +14,8 @@ export const globalColors = StyleSheet.create({
         profilepupil: {colour: '#81999e'},
         buttontext: {colour: '#52697e'},
         border: {colour: '#DCDEE0'},
-        buttonchangeimage: {colour: '#E9ECEF'}
+        buttonchangeimage: {colour: '#E9ECEF'},
+        search: {colour: '#F8F8F8'}
 
     },
 

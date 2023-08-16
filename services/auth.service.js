@@ -3,7 +3,7 @@ import axios from 'axios';
 const login = (email, password) => {
     console.log('pelle m')
     return axios
-        .post('http://192.168.1.254:8080/api/auth/signin', {
+        .post('http://192.168.1.98:8080/api/auth/signin', {
             email,
             password,
         })
@@ -16,6 +16,10 @@ const login = (email, password) => {
 
             return response.data;
         })
+        .catch((error) => {
+            console.log('Error:', error.message);
+            throw error; // Re-throw the error to be caught by the caller, if needed
+          });
 }
 
 const AuthService = {

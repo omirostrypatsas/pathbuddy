@@ -39,4 +39,23 @@ User.findByEmail = (email, result) => {
     });
 };
 
+User.getAll = (email, result) => {
+  let query = "SELECT * FROM users";
+
+  if (email) {
+    query += `WHERE email LIKE '%$(email)%'`;
+  }
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("emails: ", res);
+    result(null, res);
+  });
+};
+
 module.exports = User;
