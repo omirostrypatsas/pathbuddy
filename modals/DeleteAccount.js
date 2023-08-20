@@ -2,8 +2,16 @@ import { React, useState } from 'react';
 import { StyleSheet, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function DeleteAccount({ isVisible, toggleModal }) {
+
+  const navigation = useNavigation();
+
+  const deleteAcc = () => {
+    navigation.navigate('Login')
+}    
+
 
   return (
     <Modal
@@ -23,7 +31,7 @@ export default function DeleteAccount({ isVisible, toggleModal }) {
             <View style={{marginTop: 10, marginBottom: 5}}>
                 <Text>Just so you know, by deleting your account, all your data will be permanently deleted and you will not be able to retrieve it even if you sign up again with the same email.</Text>
             </View>
-          <TouchableOpacity style={styles.enterbutton}>
+          <TouchableOpacity style={styles.enterbutton} onPress={deleteAcc}>
             <Text style={styles.buttontext}>Delete Account</Text>
           </TouchableOpacity>
         </View>

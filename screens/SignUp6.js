@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+import AuthService from "../services/auth.service";
 
 export default function SignUp6({ route }) {
     const navigation = useNavigation();
@@ -13,6 +14,8 @@ export default function SignUp6({ route }) {
     const [password2, setPassword2] = useState('');
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
+    const API_URL = "http://192.168.1.122:8081"
+
     const handleLogin = () => {
       navigation.navigate('Login');
       console.log("Log in button pressed");
@@ -27,8 +30,20 @@ export default function SignUp6({ route }) {
         if (password1.trim() !== '' || password2.trim() !== '') {
             if (password1.trim() == password2.trim()){
                 if (password1.trim().length >= 8) {
-                    navigation.navigate('Feed', { firstname: firstname, lastname: lastname, dob: dob, pronoun: pronoun, email: email});
-                    console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
+                  AuthService.register(email, password1, firstname, lastname, dob, pronoun).then(
+                    () => {
+                      navigation.navigate('Feed');
+                      navigation.navigate('Feed', { firstname: firstname, lastname: lastname, dob: dob, pronoun: pronoun, email: email});
+                      console.log("Next button pressed:", firstname, lastname, dob, pronoun, email);
+                    },
+                    (error) => {
+                      const resMessage =
+                        (error.response &&
+                          error.response.data &&
+                          error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+                        })
                 } else {
                     Alert.alert('Password should be at least 8 characters long');
                 }

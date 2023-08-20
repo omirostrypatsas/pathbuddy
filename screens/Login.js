@@ -15,7 +15,7 @@ export default function Login() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState('');
     const navigation = useNavigation();
-    const API_URL = "http://192.168.1.122:8080"
+    const API_URL = "http://192.168.1.122:8081"
 
     const handleForgotPassword = () => {
         console.log("Forgot Password");
@@ -56,6 +56,7 @@ export default function Login() {
     };
 
     const fetchApi = async () => {
+      console.log('INsert api')
       try {
         const res = await axios.get(API_URL + "/test")
         console.log('api working');

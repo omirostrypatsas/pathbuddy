@@ -1,11 +1,26 @@
 import axios from 'axios';
 
+const API_URL = "http://192.168.1.122:8081/api/auth"
+
+const register = (email, password, firstname, lastname, dob, pronoun) => {
+    console.log(email, password, firstname, lastname, dob, pronoun)
+    return axios.post(API_URL + "signup", {
+      email,
+      password,
+      firstname,
+      lastname,
+      dob,
+      pronoun,
+    });
+  };
+
 const login = (email, password) => {
     console.log('pelle m')
+    console.log(email,password)
     return axios
-        .post('http://192.168.1.98:8080/api/auth/signin', {
+        .post(API_URL + '/signin', {
             email,
-            password,
+            password,  
         })
         .then((response) => {
             console.log('alo')
@@ -17,13 +32,25 @@ const login = (email, password) => {
             return response.data;
         })
         .catch((error) => {
-            console.log('Error:', error.message);
-            throw error; // Re-throw the error to be caught by the caller, if needed
+            if (error.response) {
+                console.log(error.response);
+                console.log("server responded");
+              } else if (error.request) {
+                console.log("network error");
+              } else {
+                console.log(error);
+              }np
           });
 }
 
+const logout = () => {
+    localStorage.removeItem("user");
+  };
+
 const AuthService = {
-    login
+    login,
+    register,
+    logout
 };
 
 export default AuthService;

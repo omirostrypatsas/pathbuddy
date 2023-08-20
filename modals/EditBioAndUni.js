@@ -31,7 +31,7 @@ export default function EditBioAndUni({ isVisible, toggleModal }) {
                 style={styles.textinput1}
                 placeholder = 'This is my new bio..'
                 placeholderTextColor={globalColors.grey.greyarrow.colour}
-                value1={newuni}
+                value1={newbio}
                 onChangeText={setNewBio}
                 autoCapitalize='none'
             />

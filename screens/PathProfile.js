@@ -26,6 +26,8 @@ export default function PathProfile() {
         setModalVisible2(!isModalVisible2);
     };
 
+    
+
     return(
 
         <View style={styles.bigbox}>

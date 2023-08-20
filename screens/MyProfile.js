@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import { globalColors } from "../colors";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import BottomBar from '../components/BottomBar';
 import { Feather, Ionicons } from '@expo/vector-icons';
@@ -44,6 +44,7 @@ export default function MyProfile() {
                 <Feather name="settings" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             </View>
+            <ScrollView>
             <View style={styles.profileinfo}>
                 <Image source={user.image} style={styles.image}/>
                 <View style={styles.userinfo}>
@@ -78,6 +79,7 @@ export default function MyProfile() {
             <View style={styles.postsbox}>
                 <Text style={styles.poststext}>Posts</Text>
             </View>
+            </ScrollView>
             <View style={styles.bottombar}>
                 {isModalVisible ? null : <BottomBar activeRoute={'MyProfile'} />}
             </View>

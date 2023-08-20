@@ -2,8 +2,15 @@ import { React, useState } from 'react';
 import { StyleSheet, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LogoutModal({ isVisible, toggleModal }) {
+
+    const navigation = useNavigation();
+
+    const logOut = () => {
+        navigation.navigate('Login')
+    }    
 
   return (
     <Modal
@@ -19,7 +26,7 @@ export default function LogoutModal({ isVisible, toggleModal }) {
                 <TouchableOpacity style= {styles.cancel} onPress={toggleModal}>
                     <Text style={styles.canceltext}>Cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.logoutbutton}>
+                <TouchableOpacity style={styles.logoutbutton} onPress={logOut}>
                     <Text style={styles.buttontext}>Log out</Text>
                 </TouchableOpacity>
             </View>

@@ -15,7 +15,8 @@ export const globalColors = StyleSheet.create({
         buttontext: {colour: '#52697e'},
         border: {colour: '#DCDEE0'},
         buttonchangeimage: {colour: '#E9ECEF'},
-        search: {colour: '#F8F8F8'}
+        search: {colour: '#F8F8F8'},
+        postborder: {colour: '#EEF3F3'}
 
     },
 
@@ -23,7 +24,12 @@ export const globalColors = StyleSheet.create({
         white: {colour: '#FFFFFF'},
         grey: {colour: '#BBC3CB'},
         black: {colour: '#000000'},
-        red: {colour: '#ff0000'}
-        
+        red: {colour: '#ff0000'},
+        green: {colour: '#25d366'}
+    },
+
+    blue: {
+        facebook: {colour: '#3b5998'},
+        twitter: {colour: '#00acee'}
     }
 });

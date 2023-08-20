@@ -9,7 +9,9 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 import DeleteAccount from '../modals/DeleteAccount';
 import LogoutModal from '../modals/LogoutModal';
 import ChangePassword from '../modals/ChangePassword';
-import { KeyboardAvoidingView } from 'react-native';
+import AboutPathbuddy from '../modals/AboutPathbuddy';
+import Notifications from '../modals/Notifications';
+import Account from '../modals/Account';
 
 
 const { width } = Dimensions.get('screen');
@@ -20,6 +22,9 @@ export default function Settings() {
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModalVisible2, setModalVisible2] = useState(false);
     const [isModalVisible3, setModalVisible3] = useState(false);
+    const [isModalVisible4, setModalVisible4] = useState(false);
+    const [isModalVisible5, setModalVisible5] = useState(false);
+    const [isModalVisible6, setModalVisible6] = useState(false);
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
@@ -33,20 +38,20 @@ export default function Settings() {
         setModalVisible3(!isModalVisible3);
     }
 
-    const handleAccount = () => {
-        navigation.navigate('Settings')
+    const toggleModal4 = () => {
+        setModalVisible4(!isModalVisible4);
     }
 
-    const handleNotifications = () => {
-        navigation.navigate('Settings')
+    const toggleModal5 = () => {
+        setModalVisible5(!isModalVisible5);
+    }
+
+    const toggleModal6 = () => {
+        setModalVisible6(!isModalVisible6);
     }
 
     const handleHelp = () => {
-        navigation.navigate('Settings')
-    }
-
-    const handlePathbuddy = () => {
-        navigation.navigate('Settings')
+        navigation.navigate('HelpCenter')
     }
 
     const settingoption1 =({ icon, title, caption, onpress}) => (
@@ -84,7 +89,7 @@ export default function Settings() {
                         icon: 'person-outline',
                         title: 'Account',
                         caption: 'Privacy, Change Name',
-                        onpress: handleAccount
+                        onpress: toggleModal6
                     })}
                     {settingoption2({
                         icon: 'lock',
@@ -95,20 +100,20 @@ export default function Settings() {
                     {settingoption1({
                         icon: 'notifications-outline',
                         title: 'Notifications',
-                        caption: 'Message, group, ringtone',
-                        onpress: handleNotifications
+                        caption: 'Message, post, buddy up',
+                        onpress: toggleModal5
                     })}
                     {settingoption2({
                         icon: 'questioncircleo',
                         title: 'Help',
-                        caption: 'Help center, contact us, privacy policy',
+                        caption: 'Help center- FAQ and contact us',
                         onpress: handleHelp
                     })}
                     {settingoption1({
                         icon: 'people-outline',
                         title: 'About Pathbuddy',
                         caption: 'Information about Pathbuddy',
-                        onpress: handlePathbuddy
+                        onpress: toggleModal4
                     })}
                     {settingoption2({
                         icon: 'deleteuser',
@@ -116,7 +121,10 @@ export default function Settings() {
                         caption: 'Permanently delete your account',
                         onpress: toggleModal
                     })}
+                    <Account isVisible={isModalVisible6} toggleModal={toggleModal6}/>
                     <ChangePassword isVisible={isModalVisible3} toggleModal={toggleModal3}/>
+                    <Notifications isVisible={isModalVisible5} toggleModal={toggleModal5}/>
+                    <AboutPathbuddy isVisible={isModalVisible4} toggleModal={toggleModal4}/>
                     <DeleteAccount isVisible={isModalVisible} toggleModal={toggleModal} />
                     <TouchableOpacity onPress={toggleModal2} style={styles.logoutbutton}>
                     <LogoutModal isVisible={isModalVisible2} toggleModal={toggleModal2}/>
