@@ -117,5 +117,5 @@ const HandlingImage = () => {
     }
   });
   
-  export default HandlingImage;
+export default HandlingImage;
   

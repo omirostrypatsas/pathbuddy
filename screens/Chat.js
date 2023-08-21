@@ -61,70 +61,70 @@ export default function Chat() {
                     image: require('../assets/stick_man.jpg'),
                     firstName: 'Omiros',
                     lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    lastMessage: 'What happenned?',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'George',
+                    lastName: 'Loizou',
+                    lastMessage: 'I see, lets talk tomorrow then',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Chris',
+                    lastName: 'Antonio',
+                    lastMessage: 'Sure I agree with you!',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Michael',
+                    lastName: 'Rawat',
+                    lastMessage: 'Taking in to consideration the above, I think that the best solution for you is to just keep going with what you have already selected',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Tim',
+                    lastName: 'Barber',
+                    lastMessage: 'Omg I cannot believe what she told you!',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Andrew',
+                    lastName: 'Adler',
+                    lastMessage: 'Fair enough will check it out in a bit',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Constantinos',
+                    lastName: 'Hadjichristodoulou',
+                    lastMessage: 'Based on the latest article published by New York Times, the global university rankings have changed and there is an unexpected change in the top 3 so check it out',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Tom',
+                    lastName: 'Adams',
+                    lastMessage: 'What do you mean?',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    firstName: 'Imogen',
+                    lastName: 'Masters',
+                    lastMessage: 'I will text you as soon as I finish my tutoring lesson',
                     dateAndTime: 'just now'
                 })}
                                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
+                    firstName: 'Ava',
                     lastName: 'Trypatsas',
-                    lastMessage: 're ime nakkon shillokathisterimenos en je ksero je teleia sioura ti eisai je',
+                    lastMessage: 'Are you sure about it or?',
                     dateAndTime: 'just now'
                 })}
             </ScrollView>

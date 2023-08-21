@@ -1,11 +1,21 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
+import { StyleSheet, Text, View, Dimensions, Image, Modal } from "react-native";
 import { globalColors } from "../colors";
 import { Entypo } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import ImageFullScreen from '../screens/ImageFullScreen';
 
 const { width } = Dimensions.get('screen');
 
 const Post = ({ profilepic, firstname, lastname, path, caption, image, timeposted }) => {
+
+    const [isModalVisible, setModalVisible] = useState(false);
+    const navigation = useNavigation();
+    const toggleModal = () => {
+        navigation.navigate('ImageFullScreen', {image: image});
+    };
+
     return (
         <View style={styles.post}>
             <View style={{flexDirection: 'row'}}>
@@ -19,7 +29,9 @@ const Post = ({ profilepic, firstname, lastname, path, caption, image, timeposte
                 </View>
             </View>
             <Text style={{marginTop: 12}}>{caption}</Text>
-            <Image source={image} style={styles.postimage}/>
+            <TouchableOpacity onPress={toggleModal} >
+                <Image source={image} style={styles.postimage}/>
+            </TouchableOpacity>
         </View>
     );
 };

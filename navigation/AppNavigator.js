@@ -16,6 +16,7 @@ import NewPost from '../screens/NewPost.js';
 import BuddyProfile from '../screens/BuddyProfile.js';
 import PathProfile from '../screens/PathProfile.js';
 import HelpCenter from '../screens/HelpCenter.js';
+import ImageFullScreen from '../screens/ImageFullScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ const AppNavigator = () => {
                 <Stack.Screen name="NewPost" component={NewPost} options={{ headerShown: false}}/>
                 <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false}}/>
                 <Stack.Screen name="HelpCenter" component={HelpCenter} options={{ headerShown: false}}/>
+                <Stack.Screen name="ImageFullScreen" component={ImageFullScreen} options={{ headerShown: false}}/>
                 {/* Profile screens: */}
                 <Stack.Screen name="MyProfile" component={MyProfile} options={{ headerShown: false}}/>
                 <Stack.Screen name="PathProfile" component={PathProfile} options={{ headerShown: false}}/>
