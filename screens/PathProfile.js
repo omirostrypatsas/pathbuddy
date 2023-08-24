@@ -24,7 +24,12 @@ export default function PathProfile() {
     const toggleModal2 = () => {
         setModalVisible2(!isModalVisible2);
     };
-
+    const handleBuddies = () => {
+        navigation.navigate('PathsBuddiesList', { selected: 'Buddies', username: user.username} )
+      };
+    const handlePaths = () => {
+        navigation.navigate('PathsBuddiesList', { selected: 'Paths', username: user.username })
+    };
 
 
     return(
@@ -34,7 +39,7 @@ export default function PathProfile() {
                 <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             <View style={styles.titlebox}>
-                <Text style={styles.titletext}>Path Profile</Text>
+                <Text style={styles.titletext}>{firstname +' '+ lastname}</Text>
             </View>
             <View style={styles.settings}>
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
@@ -44,28 +49,28 @@ export default function PathProfile() {
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
             <View style={styles.profileinfo}>
                 <Image source={user.image} style={styles.image}/>
+                <TouchableOpacity style={styles.button1} onPress={handleBuddies}>
+                    <Text style={styles.number}>{user.buddies}</Text>
+                    <Text style={styles.buttontext}>Buddies</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button2} onPress={handlePaths}>
+                    <Text style={styles.number}>{user.paths}</Text>
+                    <Text style={styles.buttontext}>Paths</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.friendsinfo}>
                 <View style={styles.userinfo}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.firstandlastnames}>{firstname +' '+ lastname}</Text>
-                        <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} />
-                    </View>
-                    <View style={styles.uniinfo}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.firstandlastnames}>{user.username}</Text>
+                    <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} />
+                </View>
+                <View style={styles.uniinfo}>
                         {user.path && <Text style={styles.pupiltext}>Path: </Text>}
-                        {user.path && <Text style={styles.unitext}>@{user.path}</Text>}
-                    </View>
+                        {user.path && <Text style={styles.unitext}>#{user.path}</Text>}
+                </View>
                 </View>
             </View>
-            <View style={styles.friendsinfo}>
-                <TouchableOpacity style={styles.button1}>
-                    <Text style={styles.buttontext}>Buddies</Text>
-                    <Text style={styles.number}>{user.buddies}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button2}>
-                    <Text style={styles.buttontext}>Paths</Text>
-                    <Text style={styles.number}>{user.paths}</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.friendsinfo}>
+            <View style={styles.buttons}>
                 <TouchableOpacity style={styles.follow} onPress={toggleModal}>
                 <EditBioAndUni isVisible={isModalVisible} toggleModal={toggleModal} />
                     <Text style={styles.followtext}>Follow</Text>
@@ -161,9 +166,9 @@ const styles = StyleSheet.create ({
         color: globalColors.grey.profilepupil.colour
     },
     friendsinfo: {
-        marginTop: 50,
+        marginTop: 10,
         flexDirection: 'row',
-        alignSelf: 'center'
+        marginLeft: 27
     },
     buttontext: {
         fontSize: 14,
@@ -177,10 +182,12 @@ const styles = StyleSheet.create ({
     },
     button1: {
         width:100,
+        marginLeft: 30,
+        marginTop: 20
     },
     button2: {
         width:100,
-        marginLeft: 45
+        marginTop: 20
     },
     follow: {
         backgroundColor: globalColors.orange.background.colour,
@@ -219,6 +226,11 @@ const styles = StyleSheet.create ({
         fontWeight: '500',
         textAlign: 'center',
         paddingBottom: 11
+    },
+    buttons: {
+        alignSelf: 'center',
+        flexDirection: 'row',
+        marginTop: 20
     }
 })
 
@@ -226,8 +238,9 @@ const user = {
     image: require('../assets/stick_man.jpg'),
     firstname: 'Computer',
     lastname: 'Science',
-    path: 'Sciences',
-    buddies: 50,
+    username: 'computerscience',
+    path: 'science',
+    buddies: '<50',
     paths: 7
 }
 

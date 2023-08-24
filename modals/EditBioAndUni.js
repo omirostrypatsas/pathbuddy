@@ -5,8 +5,9 @@ import { TextInput } from 'react-native-gesture-handler';
 
 export default function EditBioAndUni({ isVisible, toggleModal }) {
 
-    const [newuni, setNewUni] = useState('');
-    const [newbio, setNewBio] = useState('');
+    const [newUsername, setNewUsername] = useState('');
+    const [newSchool, setNewSchool] = useState('');
+    const [newBio, setNewBio] = useState('');
 
   return (
     <Modal
@@ -16,22 +17,31 @@ export default function EditBioAndUni({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 300, width: 300, borderRadius: 10 }}>
-            <Text>Change university name</Text>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 450, width: 300, borderRadius: 10 }}>
+            <Text style={{ marginTop: 20 }}>Change username</Text>
+            <TextInput
+                style={styles.textinput1}
+                placeholder = 'mike_123'
+                placeholderTextColor={globalColors.grey.border.colour}
+                value1={newUsername}
+                onChangeText={setNewUsername}
+                autoCapitalize='none'
+            />
+            <Text style={{ marginTop: 20 }}>Change school name</Text>
             <TextInput
                 style={styles.textinput1}
                 placeholder = 'Grammar School...'
-                placeholderTextColor={globalColors.grey.greyarrow.colour}
-                value1={newuni}
-                onChangeText={setNewUni}
+                placeholderTextColor={globalColors.grey.border.colour}
+                value1={newSchool}
+                onChangeText={setNewSchool}
                 autoCapitalize='none'
             />
             <Text style={{ marginTop: 20 }}>Change your bio</Text>
             <TextInput
                 style={styles.textinput1}
                 placeholder = 'This is my new bio..'
-                placeholderTextColor={globalColors.grey.greyarrow.colour}
-                value1={newbio}
+                placeholderTextColor={globalColors.grey.border.colour}
+                value1={newBio}
                 onChangeText={setNewBio}
                 autoCapitalize='none'
             />

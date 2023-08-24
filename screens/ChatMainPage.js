@@ -14,6 +14,10 @@ export default function Chat() {
 
     const navigation = useNavigation();
 
+    const handleUser = () => {
+        navigation.navigate('ChatOneVsOne')
+    }
+
     const chatWithUser =({ image, firstName, lastName, lastMessage, dateAndTime}) => {
         const fullName = firstName + ' ' + lastName
         if (fullName.length > 26) { 
@@ -28,7 +32,7 @@ export default function Chat() {
         }
 
         return(
-        <TouchableOpacity style={styles.chatbutton} >
+        <TouchableOpacity style={styles.chatbutton} onPress={handleUser}>
                 <Image source={image} style={styles.image}/>
                 <View style={styles.buttontext}>
                     <Text style={{fontWeight: '500', fontSize: 15}} >{newFullName}</Text>
@@ -52,9 +56,6 @@ export default function Chat() {
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
                 <Feather name="settings" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
-            </View>
-            <View style={styles.search}>
-                <SearchTab/>
             </View>
             <ScrollView alwaysBounceVertical={true} style={styles.scrollview} contentContainerStyle={styles.scrollviewcontent}>
                 {chatWithUser({

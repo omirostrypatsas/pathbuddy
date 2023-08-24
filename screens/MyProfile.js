@@ -48,29 +48,29 @@ export default function MyProfile() {
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
             <View style={styles.profileinfo}>
                 <Image source={user.image} style={styles.image}/>
+                <TouchableOpacity style={styles.button1} onPress={handleBuddies}>
+                    <Text style={styles.number}>{user.buddies}</Text>
+                    <Text style={styles.buttontext}>Buddies</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button2} onPress={handlePaths}>
+                    <Text style={styles.number}>{user.paths}</Text>
+                    <Text style={styles.buttontext}>Paths</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.friendsinfo}>
                 <View style={styles.userinfo}>
-                    <Text style={styles.firstandlastnames}>{firstname +' '+ lastname}</Text>
+                    <Text style={styles.username}>{user.username}</Text>
                     <View style={styles.uniinfo}>
-                        {user.uni && <Text style={styles.pupiltext}>Pupil at: </Text>}
-                        {user.uni && <Text style={styles.unitext}>@{user.uni}</Text>}
+                        {user.school && <Text style={styles.pupiltext}>Pupil at: </Text>}
+                        {user.school && <Text style={styles.unitext}>@{user.school}</Text>}
                     </View>
                     {user.bio && <Text style={styles.biotext}>{user.bio}</Text>}
                 </View>
             </View>
-            <View style={styles.friendsinfo}>
-                <TouchableOpacity style={styles.button1} onPress={handleBuddies}>
-                    <Text style={styles.buttontext}>Buddies</Text>
-                    <Text style={styles.number}>{user.buddies}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button2} onPress={handlePaths}>
-                    <Text style={styles.buttontext}>Paths</Text>
-                    <Text style={styles.number}>{user.paths}</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.friendsinfo}>
+            <View style={styles.buttons}>
                 <TouchableOpacity style={styles.editprofileuni} onPress={toggleModal}>
                 <EditBioAndUni isVisible={isModalVisible} toggleModal={toggleModal} />
-                    <Text style={styles.editprofileunitext}>Edit uni or bio</Text>
+                    <Text style={styles.editprofileunitext}>Edit profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.editprofilepic} onPress={toggleModal2}>
                 <EditProfilePic isVisible={isModalVisible2} toggleModal={toggleModal2} />
@@ -143,7 +143,7 @@ const styles = StyleSheet.create ({
     userinfo: {
         marginLeft: 13,
     },
-    firstandlastnames: {
+    username: {
         fontSize: 19,
         fontWeight: '700',
     },
@@ -162,9 +162,9 @@ const styles = StyleSheet.create ({
         color: globalColors.grey.profilepupil.colour
     },
     friendsinfo: {
-        marginTop: 50,
+        marginTop: 10,
         flexDirection: 'row',
-        alignSelf: 'center'
+        marginLeft: 27
     },
     buttontext: {
         fontSize: 14,
@@ -178,22 +178,24 @@ const styles = StyleSheet.create ({
     },
     button1: {
         width:100,
+        marginLeft: 30,
+        marginTop: 20
     },
     button2: {
         width:100,
-        marginLeft: 45
+        marginTop: 20
     },
     editprofileuni: {
         backgroundColor: globalColors.orange.background.colour,
         height: 45,
-        width: 100,
+        width: 150,
         borderRadius: 10,
     },
     editprofileunitext: {
         color: globalColors.maincolors.white.colour,
         fontSize: 14,
         textAlign: 'center',
-        paddingTop: 10,
+        paddingTop: 12,
     },
     editprofilepic: {
         marginLeft: 15,
@@ -220,6 +222,11 @@ const styles = StyleSheet.create ({
         fontWeight: '500',
         textAlign: 'center',
         paddingBottom: 11
+    },
+    buttons: {
+        alignSelf: 'center',
+        flexDirection: 'row',
+        marginTop: 20
     }
 })
 
@@ -227,9 +234,10 @@ const user = {
     image: require('../assets/no-profile-picture-icon-18.jpg'),
     firstname: 'Hossein',
     lastname: 'Darda',
-    uni: 'geia',
-    bio: 'eimai vlaks',
-    buddies: 50,
+    username: 'hossein_d',
+    school: 'UCL_Academy',
+    bio: 'Computer Science is my life!',
+    buddies: '<100',
     paths: 7
 }
 

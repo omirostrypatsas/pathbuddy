@@ -20,11 +20,11 @@ const BottomBar = ({ activeRoute }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Chat')} style={styles.othericon}>
                 <Ionicons name="chatbox-ellipses-outline" size={40} color={activeRoute === 'Chat' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('NewPost')} style={styles.othericon}>
-                <AntDesign name="pluscircleo" size={40} color={activeRoute === 'NewPost' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
-            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.othericon}>
-                <MaterialCommunityIcons name="atom" size={40} color={activeRoute === 'Dashboard' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
+                <MaterialCommunityIcons name="atom" size={46} color={activeRoute === 'Dashboard' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('NewPost')} style={styles.othericon}>
+                <AntDesign name="pluscircleo" size={38} color={activeRoute === 'NewPost' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('MyProfile')}>
                 <Ionicons name="person-circle-outline" size={40} color={activeRoute === 'MyProfile' ? globalColors.orange.title.colour : globalColors.maincolors.black.color}/>
