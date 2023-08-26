@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native-gesture-handler';
 import { Picker } from '@react-native-picker/picker'
 
 export default function SignUp4({ route }) {

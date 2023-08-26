@@ -1,61 +1,151 @@
-import { React, useState } from 'react';
+import { React, useState, useCallback, useEffect } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, Image } from "react-native";
 import { globalColors } from "../colors";
-import {TouchableOpacity } from 'react-native-gesture-handler';
+import {TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import {NavigationContainer} from '@react-navigation/native'
-import BottomBar from '../components/BottomBar';
-import { Feather, Ionicons, AntDesign } from '@expo/vector-icons';
-import SearchTab from '../components/SearchComponent';
+import { Feather, Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 
 const { width } = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 
-export default function ChatOneVsOne() {
+export default function ChatOneVsOne({ route }) {
 
     const navigation = useNavigation();
+    const [message, setMessage] = useState('');
+    const { image, firstName, lastName, online, lastMessage, dateAndTime } = route.params
+    console.log(firstName, online, lastMessage)
 
-    const chatWithUser =({ image, firstName, lastName, lastMessage, dateAndTime}) => {
-        const fullName = firstName + ' ' + lastName
-        if (fullName.length > 26) { 
-            newFullName = (fullName).substring(0, 25) + '...';
-        } else {
-            newFullName = firstName + ' ' + lastName
-        }
+    const fullName = firstName + ' ' + lastName
+    if (fullName.length > 26) { 
+        newFullName = (fullName).substring(0, 25) + '...';
+    } else {
+        newFullName = firstName + ' ' + lastName
+    }
 
-        if (lastMessage.length > 76) {
-            lastMessage = lastMessage.substring(0,75) + '...';
-            console.log(lastMessage)
-        }
+    const [messages, setMessages] = useState([])
 
-        return(
-        <TouchableOpacity style={styles.chatbutton} >
-                <Image source={image} style={styles.image}/>
-                <View style={styles.buttontext}>
-                    <Text style={{fontWeight: '500', fontSize: 15}} >{newFullName}</Text>
-                    <Text style={{marginRight: 60, marginTop: 8}}>{lastMessage}</Text>
+    useEffect(() => {
+        setMessages([
+        {
+            _id: 1,
+            text: 'Hello developer',
+            createdAt: new Date(),
+            user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: styles => <Image source={image} style={{width: 33, height: 33, marginBottom: 8, borderRadius:2, borderWidth: 2, borderColor: globalColors.orange.background.colour, borderRadius: 50}}/>,
+            },
+        },
+        {
+            _id: 2,
+            text: 'Omg',
+            createdAt: new Date(),
+            user: {
+            _id: 1,
+            name: 'React Native',
+            image: 'https://placeimg.com/140/140/any',
+            },
+        },
+        ])
+    }, [])
+
+    const onSend = useCallback((messages = []) => {
+        setMessages(previousMessages =>
+        GiftedChat.append(previousMessages, messages),
+        )
+    }, [])
+
+    const renderBubble = (props) => {
+        return (
+        <Bubble
+            {...props}
+            wrapperStyle={{
+                right: {
+                    backgroundColor: globalColors.orange.background.colour,
+                },
+                left: {
+
+                }
+            }}
+            textStyle={{
+                right: {
+                    color: globalColors.maincolors.white.colour,
+                    fontSize: 14,
+                    fontWeight: '500'
+                },
+                left: {
+                    color: globalColors.maincolors.black.colour,
+                    fontSize: 14,
+                    fontWeight: '500'
+                }
+            }}
+        />
+        );
+    }
+
+    const renderSend = (props) => {
+        return (
+            <Send {...props}>
+                <View>
+                    <Feather name="send" size={24} style={{marginBottom: 10, marginRight: 15}} color={globalColors.orange.background.colour} /> 
                 </View>
-                <AntDesign name="right" size={24} color={globalColors.grey.greyarrow.colour} style={styles.arrow}/>
-        </TouchableOpacity>
-    );
+            </Send>
+        );
+    }
+
+    const scrollToBottomComponent = () => {
+        return (
+            <AntDesign name="down" size={24} color="black" />
+        );
     }
 
     return(
 
         <View style={styles.bigbox}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backarrow}>
-                <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
-            </TouchableOpacity>
-            <View style={styles.titlebox}>
-                <Text style={styles.titletext}>Chat</Text>
+            <View style={styles.header}>
+                <View>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backarrow}>
+                        <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
+                    </TouchableOpacity>
+                </View>
+                <View style={{marginLeft: 39}}>
+                    <TouchableOpacity >
+                        <Image style={styles.profilepic} source={image} />
+                    </TouchableOpacity>
+                </View>
+                <View style={{flexDirection: 'column', marginLeft: 13}}>
+                    <TouchableOpacity>
+                        <Text style={styles.name}>{newFullName}</Text>
+                    </TouchableOpacity>
+                    <View style={{flexDirection: 'row'}}>
+                        <Entypo name="dot-single" size={24} color={online === "true" ? globalColors.maincolors.green.colour : globalColors.maincolors.red.colour } style={{marginLeft: -7}}/>
+                        <Text style={{ fontSize: 11, marginTop: 4}}>{online === "true" ? "Online" : "Offline"}</Text>
+                    </View>
+                </View>
+                <View style={styles.phonecall}>
+                    <TouchableOpacity>
+                        <Feather name="phone" size={24} color={globalColors.orange.background.colour} />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.videocall}>
+                    <TouchableOpacity>
+                        <Feather name="video" size={24} color={globalColors.orange.background.colour} />
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.settings}>
-            <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-                <Feather name="settings" size={24} colour={globalColors.maincolors.black.color}/>
-            </TouchableOpacity>
-            </View>
-            <ScrollView alwaysBounceVertical={true} style={styles.scrollview} contentContainerStyle={styles.scrollviewcontent}>
-
-            </ScrollView>
+            <GiftedChat
+                messages={messages}
+                onSend={messages => onSend(messages)}
+                user={{
+                    _id: 1,
+                }}
+                renderBubble={renderBubble}
+                renderSend={renderSend}
+                scrollToBottom
+                scrollToBottomComponent={scrollToBottomComponent}
+            />
         </View>
     )
 };
@@ -76,12 +166,6 @@ const styles = StyleSheet.create ({
         borderTopWidth: 2,
         width: width
     },
-    settings: {
-        position: 'absolute',
-        alignItems: 'flex-end',
-        right: 24,
-        marginTop: 45
-    },
     titlebox: {
         alignSelf: 'center',
         position: 'absolute',
@@ -94,14 +178,7 @@ const styles = StyleSheet.create ({
     },
     backarrow: {
         left: 20,
-        marginTop: 45
-    },
-    image: {
-        height: 50,
-        width: 50,
-        borderColor: globalColors.orange.background.colour,
-        borderWidth: 2,
-        borderRadius: 50
+        marginTop: 5,
     },
     search: {
         marginTop: 30.3,
@@ -116,7 +193,7 @@ const styles = StyleSheet.create ({
     chatbutton: {
         height: 80,
         //marginTop: 50,
-        marginLeft: 21,
+        marginLeft: 30,
         marginRight: 21,
         borderBottomColor: globalColors.grey.outline.colour,
         borderBottomWidth: 2,
@@ -134,9 +211,44 @@ const styles = StyleSheet.create ({
         paddingTop: 10
     },
     scrollview: {
-        flex: 1
+        flex: 1,
     },
     scrollviewcontent: {
         paddingBottom: 60
+    },
+    profilepic: {
+        width: 33,
+        height: 33,
+        borderRadius: 50,
+        borderWidth: 2,
+        borderColor: globalColors.orange.background.colour,
+    },
+    header: {
+        flexDirection:'row',
+        marginTop: 45
+    },
+    name: {
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    phonecall: {
+        position: 'absolute',
+        right: 69,
+        alignItems: 'flex-end',
+    },
+    videocall: {
+        position: 'absolute',
+        right: 20,
+        alignItems: 'flex-end',
+    },
+    textinput: {
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: globalColors.grey.messagetextinput.colour,
+        borderRadius: 25,
+        height: 60,
+        paddingLeft: 20,
+        position: 'absolute',
+        bottom: 30
     }
 })

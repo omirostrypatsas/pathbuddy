@@ -3,10 +3,8 @@ import { StyleSheet, Text, View, Dimensions, ScrollView, Image } from "react-nat
 import { globalColors } from "../colors";
 import {TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
 import { Feather, Ionicons, AntDesign } from '@expo/vector-icons';
-import SearchTab from '../components/SearchComponent';
 
 const { width } = Dimensions.get('screen');
 
@@ -14,11 +12,11 @@ export default function Chat() {
 
     const navigation = useNavigation();
 
-    const handleUser = () => {
-        navigation.navigate('ChatOneVsOne')
-    }
 
     const chatWithUser =({ image, firstName, lastName, lastMessage, dateAndTime}) => {
+        const handleUser = () => {
+            navigation.navigate('ChatOneVsOne', {image: image, firstName: firstName, lastName: lastName , online: "false", lastMessage: lastMessage, dateAndTime: dateAndTime });
+        }
         const fullName = firstName + ' ' + lastName
         if (fullName.length > 26) { 
             newFullName = (fullName).substring(0, 25) + '...';
@@ -27,7 +25,7 @@ export default function Chat() {
         }
 
         if (lastMessage.length > 76) {
-            lastMessage = lastMessage.substring(0,75) + '...';
+            lastMessage = lastMessage.substring(0,70) + '...';
             console.log(lastMessage)
         }
 
@@ -197,7 +195,7 @@ const styles = StyleSheet.create ({
         borderBottomColor: globalColors.grey.outline.colour,
         borderBottomWidth: 2,
         flexDirection: 'row',
-        marginTop: 36
+        marginTop: 26
     },
     buttontext: {
         marginLeft: 21,

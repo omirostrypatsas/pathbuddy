@@ -16,7 +16,8 @@ export const globalColors = StyleSheet.create({
         border: {colour: '#DCDEE0'},
         buttonchangeimage: {colour: '#E9ECEF'},
         search: {colour: '#F8F8F8'},
-        postborder: {colour: '#EEF3F3'}
+        postborder: {colour: '#EEF3F3'},
+        messagetextinput: {colour: '#f1f5f6'}
 
     },
 
