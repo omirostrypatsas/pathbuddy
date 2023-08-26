@@ -8,7 +8,7 @@ import ImageFullScreen from '../screens/ImageFullScreen';
 
 const { width } = Dimensions.get('screen');
 
-const Post = ({ profilepic, firstname, lastname, path, caption, image, timeposted }) => {
+const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposted }) => {
 
     const [isModalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
@@ -16,15 +16,23 @@ const Post = ({ profilepic, firstname, lastname, path, caption, image, timeposte
         navigation.navigate('ImageFullScreen', {image: image});
     };
 
+    const togglePress = () => {
+        if (path==='true') {
+            navigation.navigate('PathProfile', {image: profilepic, firstName: firstName, lastName: lastName});
+        } else {
+            navigation.navigate('BuddyProfile', {image: profilepic, firstName: firstName, lastName: lastName})
+        }
+    };
+
     return (
         <View style={styles.post}>
             <View style={{flexDirection: 'row'}}>
                 <View style={{flexDirection: 'column'}}>
-                    <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity style={{flexDirection: 'row'}} onPress={togglePress}>
                         <Image source={profilepic} style={styles.image}/>
-                        <Text style={styles.firstandlastnames}>{firstname +' '+ lastname}</Text>
+                        <Text style={styles.firstandlastnames}>{firstName +' '+ lastName}</Text>
                         {path==='true' ? <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} /> : null}
-                    </View>
+                    </TouchableOpacity>
                     <Text style={styles.time}>{timeposted}</Text>
                 </View>
             </View>

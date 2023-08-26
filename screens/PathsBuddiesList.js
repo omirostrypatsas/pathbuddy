@@ -35,11 +35,12 @@ export default function PathsBuddiesList({ route }) {
         });
     };
 
-    const handleUser = ({image, firstname, lastname, username, path}) => {
+    const handleUser = ({ image, firstname, lastname, path }) => {
+        console.log({image})
         if (path === 'true') {
-            navigation.navigate('Pathprofile', {image: image, firstname: firstname, lastname: lastname, username:username})
+            navigation.navigate('Pathprofile', {image: image, firstName: firstname, lastName: lastname})
         } else {
-            navigation.navigate('BuddyProfile', {image: image, firstname: firstname, lastname: lastname, username:username})
+            navigation.navigate('BuddyProfile', {image: image, firstName: firstname, lastName: lastname})
         }
     };
 
@@ -53,7 +54,7 @@ export default function PathsBuddiesList({ route }) {
         }
 
         return (
-        <TouchableOpacity style={styles.personbox} onPress={handleUser}>
+        <TouchableOpacity style={styles.personbox} onPress={() => handleUser({image, firstname, lastname, path})}>
             <Image source={image} style={styles.image}/>
             <View style={styles.buttontext}>
                 <Text style={{fontWeight: '600', fontSize: 15}}>{username}</Text>
@@ -280,49 +281,49 @@ const buddy = [
   
   const path = [
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',
     },
     {
-      image: require('../assets/no-profile-picture-icon-18.jpg'),
+      image: require('../assets/computer1.jpg'),
       firstname: 'Computer',
       lastname: 'Science',
       username: 'computerscience',

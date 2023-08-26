@@ -46,7 +46,7 @@ export default function Account({ isVisible, toggleModal }) {
             <Text style={{ marginTop: 20 }}>Change first name</Text>
             <TextInput
                 style={styles.textinput1}
-                placeholder = 'Grammar School...'
+                placeholder = 'George'
                 placeholderTextColor={globalColors.grey.greyarrow.colour}
                 value1={newFirstName}
                 onChangeText={setNewFirstName}
@@ -55,7 +55,7 @@ export default function Account({ isVisible, toggleModal }) {
             <Text style={{ marginTop: 20 }}>Change last name</Text>
             <TextInput
                 style={styles.textinput1}
-                placeholder = 'This is my new bio..'
+                placeholder = 'Michael'
                 placeholderTextColor={globalColors.grey.greyarrow.colour}
                 value1={newLastName}
                 onChangeText={setNewLastName}

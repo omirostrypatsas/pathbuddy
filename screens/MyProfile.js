@@ -25,10 +25,10 @@ export default function MyProfile() {
         setModalVisible2(!isModalVisible2);
     };
     const handleBuddies = () => {
-        navigation.navigate('BuddyProfile')
+        navigation.navigate('PathsBuddiesList', { selected: 'Buddies', username: user.username} )
       };
     const handlePaths = () => {
-        navigation.navigate('PathProfile')
+        navigation.navigate('PathsBuddiesList', { selected: 'Paths', username: user.username })
     };
 
     return(
@@ -81,8 +81,8 @@ export default function MyProfile() {
                 <Text style={styles.poststext}>Posts</Text>
             </View>
             <View style={{marginTop: 10}}>
-                <Post profilepic= {user.image} firstname={user.firstname} lastname={user.lastname} path="false" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago"/>
-                <Post profilepic= {user.image} firstname={user.firstname} lastname={user.lastname} path="false" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago"/>
+                <Post profilepic= {user.image} firstName={user.firstname} lastName={user.lastname} path="false" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago"/>
+                <Post profilepic= {user.image} firstName={user.firstname} lastName={user.lastname} path="false" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago"/>
             </View>
             </ScrollView>
             <View style={styles.bottombar}>

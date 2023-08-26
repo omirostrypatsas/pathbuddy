@@ -14,7 +14,7 @@ export default function ChatOneVsOne({ route }) {
 
     const navigation = useNavigation();
     const [message, setMessage] = useState('');
-    const { image, firstName, lastName, online, lastMessage, dateAndTime } = route.params
+    const { image, firstName, lastName, online, lastMessage, dateAndTime, path } = route.params
     console.log(firstName, online, lastMessage)
 
     const fullName = firstName + ' ' + lastName
@@ -24,13 +24,21 @@ export default function ChatOneVsOne({ route }) {
         newFullName = firstName + ' ' + lastName
     }
 
+    const togglePress = () => {
+        if (path==='true') {
+            navigation.navigate('PathProfile', {image: image, firstName: firstName, lastName: lastName});
+        } else {
+            navigation.navigate('BuddyProfile', {image: image, firstName: firstName, lastName: lastName})
+        }
+    };
+
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
         setMessages([
         {
             _id: 1,
-            text: 'Hello developer',
+            text: 'Hello there',
             createdAt: new Date(),
             user: {
             _id: 2,
@@ -111,13 +119,14 @@ export default function ChatOneVsOne({ route }) {
                     </TouchableOpacity>
                 </View>
                 <View style={{marginLeft: 39}}>
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={togglePress}>
                         <Image style={styles.profilepic} source={image} />
                     </TouchableOpacity>
                 </View>
                 <View style={{flexDirection: 'column', marginLeft: 13}}>
-                    <TouchableOpacity>
+                    <TouchableOpacity style={{flexDirection: 'row'}} onPress={togglePress}>
                         <Text style={styles.name}>{newFullName}</Text>
+                        {path==='true' ? <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} style={{marginLeft: 5}}/> : null}
                     </TouchableOpacity>
                     <View style={{flexDirection: 'row'}}>
                         <Entypo name="dot-single" size={24} color={online === "true" ? globalColors.maincolors.green.colour : globalColors.maincolors.red.colour } style={{marginLeft: -7}}/>

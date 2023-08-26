@@ -11,11 +11,10 @@ import Post from '../components/ExistingPost';
 
 const { width } = Dimensions.get('screen');
 
-export default function PathProfile() {
+export default function PathProfile({ route }) {
 
     const navigation = useNavigation();
-    let firstname = user.firstname
-    let lastname = user.lastname
+    const { image, firstName, lastName } = route.params
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModalVisible2, setModalVisible2] = useState(false);
     const toggleModal = () => {
@@ -39,7 +38,7 @@ export default function PathProfile() {
                 <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
             <View style={styles.titlebox}>
-                <Text style={styles.titletext}>{firstname +' '+ lastname}</Text>
+                <Text style={styles.titletext}>{firstName +' '+ lastName}</Text>
             </View>
             <View style={styles.settings}>
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
@@ -48,7 +47,7 @@ export default function PathProfile() {
             </View>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
             <View style={styles.profileinfo}>
-                <Image source={user.image} style={styles.image}/>
+                <Image source={image} style={styles.image}/>
                 <TouchableOpacity style={styles.button1} onPress={handleBuddies}>
                     <Text style={styles.number}>{user.buddies}</Text>
                     <Text style={styles.buttontext}>Buddies</Text>
@@ -84,8 +83,8 @@ export default function PathProfile() {
                 <Text style={styles.poststext}>Posts</Text>
             </View>
             <View style={{marginTop: 10}}>
-                <Post profilepic= {user.image} firstname={user.firstname} lastname={user.lastname} path="true" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago"/>
-                <Post profilepic= {user.image} firstname={user.firstname} lastname={user.lastname} path="true" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago"/>
+                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="true" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago"/>
+                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="true" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago"/>
             </View>
             </ScrollView>
             <View style={styles.bottombar}>
@@ -235,7 +234,7 @@ const styles = StyleSheet.create ({
 })
 
 const user = {
-    image: require('../assets/stick_man.jpg'),
+    image: require('../assets/computer1.jpg'),
     firstname: 'Computer',
     lastname: 'Science',
     username: 'computerscience',

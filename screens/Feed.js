@@ -25,8 +25,8 @@ export default function Feed() {
                 </TouchableOpacity>
             </View>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} style={styles.scroll}>
-                <Post profilepic= {dummydata.image1} firstname="Computer" lastname="Science" path="true" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image2} timeposted="2 minutes ago"/>
-                <Post profilepic= {dummydata2.image1} firstname="Omiros" lastname="Trypatsas" path="false" caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago"/>
+                <Post profilepic= {dummydata.image1} firstName="Computer" lastName="Science" path="true" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image2} timeposted="2 minutes ago"/>
+                <Post profilepic= {dummydata2.image1} firstName="Tom" lastName="Watkins" path="false" caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago"/>
             </ScrollView>
             <View style={styles.bottombar}>
                 <BottomBar activeRoute="Feed"/>
