@@ -25,8 +25,8 @@ export default function Feed() {
                 </TouchableOpacity>
             </View>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} style={styles.scroll}>
-                <Post profilepic= {dummydata.image1} firstName="Computer" lastName="Science" path="true" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image2} timeposted="2 minutes ago"/>
-                <Post profilepic= {dummydata2.image1} firstName="Tom" lastName="Watkins" path="false" caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago"/>
+                <Post profilepic= {dummydata.image1} firstName="Computer" lastName="Science" path="true" caption="New university rankings have been published, do you agree with this list or not..?" image={dummydata.image2} timeposted="2 minutes ago" username='computerscience'/>
+                <Post profilepic= {dummydata2.image1} firstName="Tom" lastName="Watkins" path="false" caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago" username='tom_watkins'/>
             </ScrollView>
             <View style={styles.bottombar}>
                 <BottomBar activeRoute="Feed"/>
@@ -82,11 +82,11 @@ const styles = StyleSheet.create ({
 })
 
 const dummydata = {
-    image1: require('../assets/stick_man.jpg'),
-    image2: require('../assets/stemprob.png')
+    image1: require('../assets/computer1.jpg'),
+    image2: require('../assets/compstats.jpeg')
 }
 
 const dummydata2 = {
     image1: require('../assets/no-profile-picture-icon-18.jpg'),
-    image2: require('../assets/compstats.png')
+    image2: require('../assets/comppost.jpg')
 }

@@ -38,9 +38,9 @@ export default function PathsBuddiesList({ route }) {
     const handleUser = ({ image, firstname, lastname, path }) => {
         console.log({image})
         if (path === 'true') {
-            navigation.navigate('Pathprofile', {image: image, firstName: firstname, lastName: lastname})
+            navigation.navigate('Pathprofile', {username: buddy.username, image: image, firstName: firstname, lastName: lastname})
         } else {
-            navigation.navigate('BuddyProfile', {image: image, firstName: firstname, lastName: lastname})
+            navigation.navigate('BuddyProfile', {username: username, image: image, firstName: firstname, lastName: lastname})
         }
     };
 
@@ -287,45 +287,45 @@ const buddy = [
       username: 'computerscience',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/dancer.jpg'),
+      firstname: 'Dance',
+      lastname: '',
+      username: 'dance',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/astrophysics.jpg'),
+      firstname: 'Astronomy and',
+      lastname: 'Physics',
+      username: 'theoreticalphysics',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/acting.jpeg'),
+      firstname: 'Acting',
+      lastname: '',
+      username: 'acting',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
+      image: require('../assets/actuarial.jpg'),
+      firstname: 'Actuarial',
       lastname: 'Science',
-      username: 'computerscience',
+      username: 'actuarialscience',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/architecture.jpg'),
+      firstname: 'Architecture',
+      lastname: '',
+      username: 'architecture',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/aerospaceengineering.jpeg'),
+      firstname: 'Aerospace',
+      lastname: 'Engineering',
+      username: 'aeroeng',
     },
     {
-      image: require('../assets/computer1.jpg'),
-      firstname: 'Computer',
-      lastname: 'Science',
-      username: 'computerscience',
+      image: require('../assets/accounting.jpg'),
+      firstname: 'Accounting',
+      lastname: '',
+      username: 'accounting',
     },
   ];

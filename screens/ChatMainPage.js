@@ -66,8 +66,8 @@ export default function Chat() {
             <ScrollView alwaysBounceVertical={true} style={styles.scrollview} contentContainerStyle={styles.scrollviewcontent}>
                 {chatWithUser({
                     image: require('../assets/stick_man.jpg'),
-                    firstName: 'Omiros',
-                    lastName: 'Trypatsas',
+                    firstName: 'Tom',
+                    lastName: 'Watkins',
                     lastMessage: 'What happenned?',
                     dateAndTime: 'just now',
                     online: 'false',

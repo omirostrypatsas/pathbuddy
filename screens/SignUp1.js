@@ -1,9 +1,10 @@
 import React, {useState } from 'react';
-import { StyleSheet, Text, View, Alert } from "react-native";
+import { StyleSheet, Text, View, Alert, KeyboardAvoidingView} from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function SignUp1() {
   const navigation = useNavigation();
@@ -13,20 +14,31 @@ export default function SignUp1() {
     console.log("Log in button pressed");
   };
   const handleSignUp2 = () => {
-    if (firstname.trim() !== '') {
+    if (validateFirstName(firstname)) {
       navigation.navigate('SignUp2', { firstname: firstname });
-      console.log('Next button pressed:', firstname);
-    } else {
-      Alert.alert('Please enter your first name');
     }
   };
-  const validateFirstName = () => {
+  const validateFirstName = (firstname) => {
     const lettersPattern = /^[A-Za-z]+$/;
-    if (!firstname.match(lettersPattern)) {
+    if (firstname.trim()==='') {
+      Alert.alert('Please enter your first name')
+      return false;
+    } else if (firstname !== '' && !firstname.match(lettersPattern)) {
       Alert.alert('Please enter only letters in the first name field');
+      return false;
+    } else {
+      return true;
     }
   };
+
   return(
+    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
+      enableOnAndroid={true}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={true}
+      keyboardShouldPersistTaps="handled"
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      style={{ flex: 1 }}>
     <View style={styles.bigbox}>
       <View style={styles.title}>
         <Text style={styles.text1}>Please enter your first name.</Text>
@@ -40,7 +52,6 @@ export default function SignUp1() {
             value1={firstname}
             onChangeText={setFirstName}
             autoCapitalize='none'
-            onEndEditing={validateFirstName}
         />
       </View>
       <View style={styles.next}>
@@ -55,6 +66,7 @@ export default function SignUp1() {
         </TouchableOpacity>
       </View>
     </View>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -63,7 +75,7 @@ const styles = StyleSheet.create ({
       flex: 1,
       backgroundColor: globalColors.orange.background.colour,
       //marginTop: 324,
-      marginBottom: 0 
+      marginBottom: 0,
     },
   title: {
     alignSelf: 'center',

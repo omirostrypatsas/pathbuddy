@@ -1,11 +1,9 @@
 import { React, useState, useEffect } from 'react';
-import { Text, StyleSheet, View, Dimensions, TouchableOpacity} from "react-native";
+import { Text, StyleSheet, View, Dimensions, TouchableOpacity, Alert, KeyboardAvoidingView} from "react-native";
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import AuthService from "../services/auth.service";
-import Api from "../services/api";
-import axios from 'axios';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function Login() {
 
@@ -21,55 +19,34 @@ export default function Login() {
         console.log("Forgot Password");
     };
 
-    const handleLogin = (e) => {
-      e.preventDefault();
+    const handleLogin = () => {
       console.log('Log in button pressed')
-      setMessage("");
-      setLoading(true);
   
       if (email !== '' && password !== '' ) {
         console.log(email,password)
-        AuthService.login(email, password).then(
-          () => {
-            navigation.navigate('Feed');
-          },
-          (error) => {
-            const resMessage =
-              (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-              error.message ||
-              error.toString();
-  
-            setLoading(false);
-            setMessage(resMessage);
-          }
-        );
+        if (email==='user@email.com' && password==='pass1234') {
+          navigation.navigate('Feed')
+        } else {
+          Alert.alert('Wrong email or password');
+        }
       } else {
-        setLoading(false);
+        Alert.alert('Please insert email and password');
       }
     };
 
     const handleSignUp1 = () => {
-        navigation.navigate('Feed');
+        navigation.navigate('SignUp1');
         console.log("Sign Up button pressed");
     };
 
-    const fetchApi = async () => {
-      console.log('INsert api')
-      try {
-        const res = await axios.get(API_URL + "/test")
-        console.log('api working');
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    useEffect(() => {
-      fetchApi();
-    }, [])
-
     return(
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
+      enableOnAndroid={true}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={true}
+      keyboardShouldPersistTaps="handled"
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      style={{ flex: 1 }}>
         <View style={styles.bigbox}>
             <View style={styles.signupbutton}> 
             <TouchableOpacity onPress={handleSignUp1}>
@@ -119,6 +96,7 @@ export default function Login() {
               </View>
             </View>
           </View>
+    </KeyboardAwareScrollView>
     );
 }
 

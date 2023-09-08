@@ -4,6 +4,7 @@ import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function SignUp2({ route }) {
   const navigation = useNavigation();
@@ -17,20 +18,30 @@ export default function SignUp2({ route }) {
     console.log("Log in button pressed");
   };
   const handleSignUp3 = () => {
-    if (lastname.trim() !== '') {
-      navigation.navigate('SignUp3', { firstname: firstname , lastname: lastname });
-      console.log('Next button pressed:', firstname, lastname);
-    } else {
-      Alert.alert('Please enter your last name');
+    if (validateLastName(lastname)) {
+      navigation.navigate('SignUp3', { firstname: firstname, lastname: lastname });
     }
   };
-  const validateLastName = () => {
+  const validateLastName = (lastname) => {
     const lettersPattern = /^[A-Za-z]+$/;
-    if (!lastname.match(lettersPattern)) {
-      Alert.alert('Please enter only letters in the first name field');
+    if (!lastname.trim()) {
+      Alert.alert('Please enter your last name')
+      return false;
+    } else if (!lastname.match(lettersPattern)) {
+      Alert.alert('Please enter only letters in the last name field');
+      return false;
+    } else {
+      return true;
     }
   };
   return(
+    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
+      enableOnAndroid={true}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={true}
+      keyboardShouldPersistTaps="handled"
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      style={{ flex: 1 }}>
     <View style={styles.bigbox}>
       <View style={styles.title}>
         <Text style={styles.text1}>Please enter your last name.</Text>
@@ -44,7 +55,6 @@ export default function SignUp2({ route }) {
             value1={lastname}
             onChangeText={setLastName}
             autoCapitalize='none'
-            onEndEditing={validateLastName}
         />
       </View>
       <View style={styles.next}>
@@ -59,6 +69,7 @@ export default function SignUp2({ route }) {
         </TouchableOpacity>
       </View>
     </View>
+    </KeyboardAwareScrollView>
   );
 }
 

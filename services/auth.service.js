@@ -54,5 +54,3 @@ const AuthService = {
 };
 
 export default AuthService;
-
-console.log(module)

@@ -8,7 +8,7 @@ import ImageFullScreen from '../screens/ImageFullScreen';
 
 const { width } = Dimensions.get('screen');
 
-const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposted }) => {
+const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposted, username }) => {
 
     const [isModalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
@@ -18,9 +18,9 @@ const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposte
 
     const togglePress = () => {
         if (path==='true') {
-            navigation.navigate('PathProfile', {image: profilepic, firstName: firstName, lastName: lastName});
+            navigation.navigate('PathProfile', {image: profilepic, firstName: firstName, lastName: lastName, username: username});
         } else {
-            navigation.navigate('BuddyProfile', {image: profilepic, firstName: firstName, lastName: lastName})
+            navigation.navigate('BuddyProfile', {image: profilepic, firstName: firstName, lastName: lastName, username: username})
         }
     };
 

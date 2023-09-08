@@ -80,8 +80,8 @@ export default function BuddyProfile({ route }) {
                 <Text style={styles.poststext}>Posts</Text>
             </View>
             <View style={{marginTop: 10}}>
-                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="false" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago"/>
-                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="false" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago"/>
+                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="false" caption="Pathbuddy is a mobile application that focuses on the future education and career prospects of young people. It is available to download from App Store and Play store and is a form of social media that consists of various components, such as Chat, Home Feed and Profile. It provides a mean of communication between the advisors and the users, who can have access to personalised career advise, explore new professional paths and also exchange ideas and opinions with their peers." image={dummydata.image} timeposted="2 minutes ago" username={user.username}/>
+                <Post profilepic= {image} firstName={firstName} lastName={lastName} path="false" caption="Look at this important information" image={dummydata2.image} timeposted="1 hour ago" username={user.username}/>
             </View>
             </ScrollView>
             <View style={styles.bottombar}>

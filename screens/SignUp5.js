@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Alert, KeyboardAvoidingView } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function SignUp5({ route }) {
     const navigation = useNavigation();
@@ -24,7 +25,14 @@ export default function SignUp5({ route }) {
         }
     };
     return(
-      <KeyboardAvoidingView style={styles.bigbox} behavior="padding">
+      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
+      enableOnAndroid={true}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={true}
+      keyboardShouldPersistTaps="handled"
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      style={{ flex: 1 }}>
+      <View style={styles.bigbox}>
         <View style={styles.title}>
           <Text style={styles.text1}>What is your email address?</Text>
         </View>
@@ -51,7 +59,8 @@ export default function SignUp5({ route }) {
             <Text style={styles.signupLink}>Log in!</Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
+      </View>
+      </KeyboardAwareScrollView>
     );
   }
   
