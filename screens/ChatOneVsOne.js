@@ -8,7 +8,6 @@ import { Feather, Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 
 const { width } = Dimensions.get('screen');
-const { height } = Dimensions.get('screen');
 
 export default function ChatOneVsOne({ route }) {
 
@@ -43,7 +42,8 @@ export default function ChatOneVsOne({ route }) {
             user: {
             _id: 2,
             name: 'React Native',
-            avatar: styles => <Image source={image} style={{width: 33, height: 33, marginBottom: 8, borderRadius:2, borderWidth: 2, borderColor: globalColors.orange.background.colour, borderRadius: 50}}/>,
+            avatar: styles => <Image source={image} style={{width: 33, height: 33, marginBottom: 8, borderRadius:2, borderWidth: 2, 
+                borderColor: globalColors.orange.background.colour, borderRadius: 50}}/>,
             },
         },
         {
@@ -53,7 +53,6 @@ export default function ChatOneVsOne({ route }) {
             user: {
             _id: 1,
             name: 'React Native',
-            image: 'https://placeimg.com/140/140/any',
             },
         },
         ])
@@ -126,10 +125,12 @@ export default function ChatOneVsOne({ route }) {
                 <View style={{flexDirection: 'column', marginLeft: 13}}>
                     <TouchableOpacity style={{flexDirection: 'row'}} onPress={togglePress}>
                         <Text style={styles.name}>{newFullName}</Text>
-                        {path==='true' ? <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} style={{marginLeft: 5}}/> : null}
+                        {path==='true' ? <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} 
+                        style={{marginLeft: 5}}/> : null}
                     </TouchableOpacity>
                     <View style={{flexDirection: 'row'}}>
-                        <Entypo name="dot-single" size={24} color={online === "true" ? globalColors.maincolors.green.colour : globalColors.maincolors.red.colour } style={{marginLeft: -7}}/>
+                        <Entypo name="dot-single" size={24} color={online === "true" ? 
+                        globalColors.maincolors.green.colour : globalColors.maincolors.red.colour } style={{marginLeft: -7}}/>
                         <Text style={{ fontSize: 11, marginTop: 4}}>{online === "true" ? "Online" : "Offline"}</Text>
                     </View>
                 </View>
@@ -153,17 +154,14 @@ export default function ChatOneVsOne({ route }) {
                 renderBubble={renderBubble}
                 renderSend={renderSend}
                 scrollToBottom
-                scrollToBottomComponent={scrollToBottomComponent}
-            />
+                scrollToBottomComponent={scrollToBottomComponent}/>
         </View>
-    )
-};
+    )};
 
 const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     bottombar: {
@@ -201,7 +199,6 @@ const styles = StyleSheet.create ({
     },
     chatbutton: {
         height: 80,
-        //marginTop: 50,
         marginLeft: 30,
         marginRight: 21,
         borderBottomColor: globalColors.grey.outline.colour,

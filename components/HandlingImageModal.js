@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Button, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { FontAwesome, Feather } from '@expo/vector-icons';
 import { globalColors } from '../colors';
 
-const { width } = Dimensions.get('screen');
 
 const HandlingImageModal = () => {
     const [image, setImage] = useState(null);
     const [image2, setImage2] = useState(null);
   
-    // Function to handle image selection from library
     const pickImage = async () => {
-        console.log('geia')
       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== 'granted') {
         alert('Permission to access media library is required!');
@@ -28,10 +25,8 @@ const HandlingImageModal = () => {
   
       if (!result.canceled) {
         setImage(result.assets[0].uri);
-      }
-    };
-  
-    // Function to handle taking a picture with the camera
+      }};
+
     const takePicture = async () => {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
@@ -47,8 +42,7 @@ const HandlingImageModal = () => {
   
       if (!result.canceled) {
         setImage2(result.assets[0].uri);
-      }
-    };
+      }};
   
     return (
       <View style={styles.container}>
@@ -71,9 +65,8 @@ const HandlingImageModal = () => {
         </TouchableOpacity>
         )}
       </View>
-    );
-  };
-  
+    )};
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -85,23 +78,17 @@ const HandlingImageModal = () => {
     height: 150,
     width: 150,
       resizeMode: 'contain',
-      //marginTop: -200,
       alignSelf: 'center'
     },
     button1: {
-      //position: 'absolute',
       marginTop: 15,
-      //marginLeft: 15,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.orange.background.colour,
       borderWidth: 2,
       height: 60,
     },
     button2: {
-      //position: 'absolute',
       marginTop: 5,
-      //marginLeft: 15,
-      //right: 10,
       backgroundColor: globalColors.maincolors.white.colour,
       borderColor: globalColors.orange.background.colour,
       borderWidth: 2,

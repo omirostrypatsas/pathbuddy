@@ -1,10 +1,8 @@
 import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity, Switch } from 'react-native';
+import { StyleSheet, View, Text, Modal, TouchableOpacity, Switch } from 'react-native';
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import CheckBox from '@react-native-community/checkbox';
 
 export default function Account({ isVisible, toggleModal }) {
 
@@ -33,7 +31,8 @@ export default function Account({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 420, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, 
+          height: 420, width: 300, borderRadius: 10 }}>
             <Text style={{fontWeight: '700', marginTop: 10}}>Manage your account</Text>
             <View style={{ flexDirection: 'row', marginTop:20 }}>
                 <Text style={{ marginRight: 70, paddingTop: 10 }}>Change to private mode</Text>

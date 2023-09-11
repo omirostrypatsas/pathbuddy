@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, Modal, TouchableOpacity, Alert } from 'react-native';
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
@@ -29,8 +29,7 @@ export default function ChangePassword({ isVisible, toggleModal }) {
         }
     } else {
         Alert.alert('Password should not be empty!');
-    }
-    }
+    }}
 
   return (
     <Modal
@@ -40,7 +39,8 @@ export default function ChangePassword({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 450, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, 
+          height: 450, width: 300, borderRadius: 10 }}>
           <TouchableOpacity style={styles.exit} onPress={toggleModal}>
             <Feather name="x" size={24} color="black" />
           </TouchableOpacity>
@@ -81,8 +81,7 @@ export default function ChangePassword({ isVisible, toggleModal }) {
         </View>
       </View>
     </Modal>
-  );
-}
+  )};
 
 const styles = StyleSheet.create ({
     textinput1: {

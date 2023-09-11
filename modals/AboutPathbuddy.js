@@ -1,16 +1,9 @@
-import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity, Alert } from 'react-native';
+import { React } from 'react';
+import { StyleSheet, View, Text, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
 import { Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
 export default function AboutPathbuddy({ isVisible, toggleModal }) {
-
-    const navigation = useNavigation();
-
-    const toggleModel = () => {
-
-    }
 
   return (
     <Modal
@@ -20,7 +13,8 @@ export default function AboutPathbuddy({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 300, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, 
+          padding: 20, height: 300, width: 300, borderRadius: 10 }}>
           <TouchableOpacity style={styles.exit} onPress={toggleModal}>
             <Feather name="x" size={24} color="black" />
           </TouchableOpacity>

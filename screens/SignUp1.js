@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { StyleSheet, Text, View, Alert, KeyboardAvoidingView} from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -37,7 +37,7 @@ export default function SignUp1() {
       resetScrollToCoords={{ x: 0, y: 0 }}
       scrollEnabled={true}
       keyboardShouldPersistTaps="handled"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}>
     <View style={styles.bigbox}>
       <View style={styles.title}>
@@ -74,7 +74,6 @@ const styles = StyleSheet.create ({
   bigbox: {
       flex: 1,
       backgroundColor: globalColors.orange.background.colour,
-      //marginTop: 324,
       marginBottom: 0,
     },
   title: {
@@ -135,7 +134,6 @@ const styles = StyleSheet.create ({
   signupLink: {
     color: globalColors.maincolors.white.colour,
     textDecorationLine: 'underline',
-    //marginLeft: 5,
     fontSize: 14,
   },
 })

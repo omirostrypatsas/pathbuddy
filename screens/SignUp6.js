@@ -5,10 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import AuthService from "../services/auth.service";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function SignUp6({ route }) {
+  
     const navigation = useNavigation();
     const {firstname, lastname, dob, pronoun, email } = route.params
     const [password1, setPassword1] = useState('');
@@ -20,12 +20,15 @@ export default function SignUp6({ route }) {
       navigation.navigate('Login');
       console.log("Log in button pressed");
     };
+
     const togglePasswordVisibility1 = () => {
         setShowPassword1((prevState) => !prevState);
     };
+
     const togglePasswordVisibility2 = () => {
         setShowPassword2((prevState) => !prevState);
     };
+
     const handleSignUp7 = () => {
         if (password1.trim() !== '' || password2.trim() !== '') {
             if (password1.trim() == password2.trim()){
@@ -42,13 +45,14 @@ export default function SignUp6({ route }) {
             Alert.alert('Password should not be empty!');
         }
     };
+
     return(
       <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
       enableOnAndroid={true}
       resetScrollToCoords={{ x: 0, y: 0 }}
       scrollEnabled={true}
       keyboardShouldPersistTaps="handled"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}>
       <View style={styles.bigbox}>
         <View style={styles.title}>
@@ -117,7 +121,6 @@ export default function SignUp6({ route }) {
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.orange.background.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     title: {
@@ -163,7 +166,6 @@ export default function SignUp6({ route }) {
         marginRight: 21
     },
     iconContainer: {
-        //position: 'absolute',
         right: 0,
         marginLeft: 5,
         marginTop: 10
@@ -199,7 +201,6 @@ export default function SignUp6({ route }) {
     signupLink: {
       color: globalColors.maincolors.white.colour,
       textDecorationLine: 'underline',
-      //marginLeft: 5,
       fontSize: 14,
     },
   })

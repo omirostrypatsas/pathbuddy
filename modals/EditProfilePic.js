@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
 import HandlingImageModal from '../components/HandlingImageModal';
 
@@ -15,7 +15,8 @@ export default function EditProfilePic({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 300, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, 
+          height: 300, width: 300, borderRadius: 10 }}>
             <Text>Change profile picture</Text>
             <HandlingImageModal style={styles.handleimage}/>
           <TouchableOpacity style={styles.enterbutton} onPress={toggleModal}>
@@ -42,7 +43,6 @@ const styles = StyleSheet.create ({
         fontWeight: '600',
     },
     handleimage: {
-      //flex: 1,
       alignItems: 'center',
   },
 })

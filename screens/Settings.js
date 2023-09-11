@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { globalColors } from "../colors";
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import DeleteAccount from '../modals/DeleteAccount';
@@ -49,7 +48,6 @@ export default function Settings() {
     const toggleModal6 = () => {
         setModalVisible6(!isModalVisible6);
     }
-
     const handleHelp = () => {
         navigation.navigate('HelpCenter')
     }
@@ -143,7 +141,6 @@ const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0, 
       },
     bottombar: {
@@ -186,7 +183,6 @@ const styles = StyleSheet.create ({
     },
     settingbutton: {
         height: 62,
-        //marginTop: 50,
         marginLeft: 21,
         marginRight: 21,
         borderBottomColor: globalColors.grey.outline.colour,
@@ -200,7 +196,6 @@ const styles = StyleSheet.create ({
     icon: {
         marginLeft: 8,
         marginTop: 5
-        //verticalAlign: 'center'
     },
     arrow: {
         position: 'absolute',

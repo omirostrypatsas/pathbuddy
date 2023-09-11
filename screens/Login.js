@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from 'react';
-import { Text, StyleSheet, View, Dimensions, TouchableOpacity, Alert, KeyboardAvoidingView} from "react-native";
+import { React, useState } from 'react';
+import { Text, StyleSheet, View, Dimensions, TouchableOpacity, Alert } from "react-native";
 import { globalColors } from '../colors';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -10,10 +10,7 @@ export default function Login() {
     const { boxWidth } = Dimensions.get('screen');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState('');
     const navigation = useNavigation();
-    const API_URL = "http://192.168.1.122:8081"
 
     const handleForgotPassword = () => {
         console.log("Forgot Password");
@@ -45,7 +42,7 @@ export default function Login() {
       resetScrollToCoords={{ x: 0, y: 0 }}
       scrollEnabled={true}
       keyboardShouldPersistTaps="handled"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}>
         <View style={styles.bigbox}>
             <View style={styles.signupbutton}> 
@@ -97,14 +94,12 @@ export default function Login() {
             </View>
           </View>
     </KeyboardAwareScrollView>
-    );
-}
+    )};
 
 const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.orange.background.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     signupbutton:{
@@ -139,7 +134,6 @@ const styles = StyleSheet.create ({
       color: '#000000',
       fontSize: 30,
       letterSpacing: 0.8,
-      //fontFamily: "Poppins_regular",
       textAlign: 'center',
       marginTop: 15,
     },
@@ -147,7 +141,6 @@ const styles = StyleSheet.create ({
       color: '#000000',
       fontSize: 16,
       letterSpacing: 0.4,
-      //fontFamily: "Poppins_regular",
       marginLeft: 36,
       marginTop: 24,
       fontWeight: 'bold',
@@ -212,7 +205,6 @@ const styles = StyleSheet.create ({
     signupLink: {
       color: globalColors.orange.background.colour,
       textDecorationLine: 'underline',
-      //marginLeft: 5,
       fontSize: 14,
     },
   })

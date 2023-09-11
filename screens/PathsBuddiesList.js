@@ -4,7 +4,7 @@ import { globalColors } from "../colors";
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import BottomBar from '../components/BottomBar';
-import { Feather, Ionicons, Entypo } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('screen');
 
@@ -60,8 +60,11 @@ export default function PathsBuddiesList({ route }) {
                 <Text style={{fontWeight: '600', fontSize: 15}}>{username}</Text>
                 <Text style={{ marginTop: 2}}>{fullName}</Text>
             </View> 
-            <TouchableOpacity style={[styles.unfollowbutton, { borderColor: initial === 0 ? globalColors.maincolors.red.colour : globalColors.orange.background.colour }]} onPress={() => {if (initial === 0 ){setInitial(1)} else {setInitial(0)} }}>
-                <Text style={ {color: initial === 0 ? globalColors.maincolors.red.colour : globalColors.orange.background.colour}}>{isSelected === 'Buddies' ? buttonText.Buddies[initial === 0 ? 0: 1] : buttonText.Paths[initial === 0 ? 0: 1]}</Text>
+            <TouchableOpacity style={[styles.unfollowbutton, { borderColor: initial === 0 ? 
+              globalColors.maincolors.red.colour : globalColors.orange.background.colour }]} onPress={() => 
+              {if (initial === 0 ){setInitial(1)} else {setInitial(0)} }}>
+                <Text style={ {color: initial === 0 ? globalColors.maincolors.red.colour : globalColors.orange.background.colour}}>
+                  {isSelected === 'Buddies' ? buttonText.Buddies[initial === 0 ? 0: 1] : buttonText.Paths[initial === 0 ? 0: 1]}</Text>
             </TouchableOpacity>
         </TouchableOpacity>
         );
@@ -84,15 +87,19 @@ export default function PathsBuddiesList({ route }) {
             <View style={styles.category}>
                 <TouchableOpacity
                         onPress={() => { handlePressCategory('Buddies'); setShowBuddies(true); setShowPaths(false); }}
-                        style={[styles.button1, isSelected === 'Buddies' ? {borderBottomColor: globalColors.orange.background.colour} : { borderBottomColor: globalColors.maincolors.white.colour }]}
+                        style={[styles.button1, isSelected === 'Buddies' ? 
+                        {borderBottomColor: globalColors.orange.background.colour} : { borderBottomColor: globalColors.maincolors.white.colour }]}
                         >
-                        <Text style={[(isSelected === 'Buddies' ? globalColors.orange.background.colour : globalColors.grey.buttontext.colour), { marginBottom: 12 }]}>Buddies</Text>     
+                        <Text style={[(isSelected === 'Buddies' ? globalColors.orange.background.colour : globalColors.grey.buttontext.colour), 
+                        { marginBottom: 12 }]}>Buddies</Text>     
                 </TouchableOpacity>
                 <TouchableOpacity
                         onPress={() => { handlePressCategory('Paths'); setShowBuddies(false); setShowPaths(true); }} 
-                        style={[styles.button2, isSelected === 'Paths' ? {borderBottomColor: globalColors.orange.background.colour} : { borderBottomColor: globalColors.maincolors.white.colour }]}
+                        style={[styles.button2, isSelected === 'Paths' ? 
+                        {borderBottomColor: globalColors.orange.background.colour} : { borderBottomColor: globalColors.maincolors.white.colour }]}
                         >
-                        <Text style={[(isSelected === 'Paths' ? globalColors.orange.background.colour : globalColors.grey.buttontext.colour), { marginBottom: 12 }]}>Paths</Text>   
+                        <Text style={[(isSelected === 'Paths' ? globalColors.orange.background.colour : globalColors.grey.buttontext.colour), 
+                        { marginBottom: 12 }]}>Paths</Text>   
                 </TouchableOpacity>
             </View>
             { showBuddies && (
@@ -129,14 +136,12 @@ export default function PathsBuddiesList({ route }) {
                 <BottomBar activeRoute="MyProfile"/>
             </View>
         </View>
-    )
-};
+    )};
 
 const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     bottombar: {
@@ -195,16 +200,11 @@ const styles = StyleSheet.create ({
         flexDirection: 'column',
         alignItems: 'flex-start',
         width: 200
-        //marginRight: 28
     },
     unfollowbutton: {
-        //display: '',
         flexDirection: 'row',
         alignItems: 'center',
-        //right: -50,
         justifyContent: 'center',
-        //alignItems: 'center',
-        //paddingTop: 10,
         height: 32,
         gap: 4,
         marginTop: 5,
@@ -214,8 +214,6 @@ const styles = StyleSheet.create ({
         width: 70,
     },
     scrollview: {
-        //flexDirection: 'column',
-        //alignItems: 'flex-start',
         marginTop: 4,
       },
     personbox: {
@@ -224,7 +222,6 @@ const styles = StyleSheet.create ({
         marginRight: 21,
         flexDirection: 'row',
         width: width
-        //marginTop: 15
     },
 })
 

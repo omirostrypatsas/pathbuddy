@@ -1,7 +1,6 @@
-import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
+import { React } from 'react';
+import { StyleSheet, View, Text, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
-import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 export default function DeleteAccount({ isVisible, toggleModal }) {
@@ -21,7 +20,8 @@ export default function DeleteAccount({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 300, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, 
+          height: 300, width: 300, borderRadius: 10 }}>
             <TouchableOpacity style= {styles.cancel} onPress={toggleModal}>
                 <Text>Cancel</Text>
             </TouchableOpacity>
@@ -29,7 +29,8 @@ export default function DeleteAccount({ isVisible, toggleModal }) {
                 <Text style={styles.text}>We are sorry to see you go!</Text>
             </View>
             <View style={{marginTop: 10, marginBottom: 5}}>
-                <Text>Just so you know, by deleting your account, all your data will be permanently deleted and you will not be able to retrieve it even if you sign up again with the same email.</Text>
+                <Text>Just so you know, by deleting your account, all your data will be permanently deleted and you will 
+                  not be able to retrieve it even if you sign up again with the same email.</Text>
             </View>
           <TouchableOpacity style={styles.enterbutton} onPress={deleteAcc}>
             <Text style={styles.buttontext}>Delete Account</Text>
@@ -37,8 +38,7 @@ export default function DeleteAccount({ isVisible, toggleModal }) {
         </View>
       </View>
     </Modal>
-  );
-}
+  )};
 
 const styles = StyleSheet.create ({
     cancel: {

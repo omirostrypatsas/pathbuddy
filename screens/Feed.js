@@ -1,10 +1,10 @@
 import { React } from 'react';
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
+import { StyleSheet, Text, View, Dimensions} from "react-native";
 import { globalColors } from "../colors";
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import BottomBar from '../components/BottomBar';
-import { Feather, Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import Post from '../components/ExistingPost';
 
 const { width } = Dimensions.get('screen');
@@ -25,8 +25,11 @@ export default function Feed() {
                 </TouchableOpacity>
             </View>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} style={styles.scroll}>
-                <Post profilepic= {dummydata.image1} firstName="Computer" lastName="Science" path="true" caption="New university rankings have been published, do you agree with this list or not..?" image={dummydata.image2} timeposted="2 minutes ago" username='computerscience'/>
-                <Post profilepic= {dummydata2.image1} firstName="Tom" lastName="Watkins" path="false" caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago" username='tom_watkins'/>
+                <Post profilepic= {dummydata.image1} firstName="Computer" lastName="Science" path="true" 
+                caption="New university rankings have been published, do you agree with this list or not..?" 
+                image={dummydata.image2} timeposted="2 minutes ago" username='computerscience'/>
+                <Post profilepic= {dummydata2.image1} firstName="Tom" lastName="Watkins" path="false" 
+                caption="Look at this important information" image={dummydata2.image2} timeposted="1 hour ago" username='tom_watkins'/>
             </ScrollView>
             <View style={styles.bottombar}>
                 <BottomBar activeRoute="Feed"/>
@@ -39,7 +42,6 @@ const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     bottombar: {

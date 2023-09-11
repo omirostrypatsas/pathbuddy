@@ -12,12 +12,11 @@ export default function Chat() {
 
     const navigation = useNavigation();
 
-    
-
     const chatWithUser =({ image, firstName, lastName, lastMessage, dateAndTime, online, path, read, lastMessageSentBy}) => {
         const [isRead, setIsRead] = useState(read);
         const handleUser = () => {
-            navigation.navigate('ChatOneVsOne', {image: image, firstName: firstName, lastName: lastName , online: online, lastMessage: lastMessage, dateAndTime: dateAndTime, path: path });
+            navigation.navigate('ChatOneVsOne', {image: image, firstName: firstName, lastName: lastName , 
+                online: online, lastMessage: lastMessage, dateAndTime: dateAndTime, path: path });
             setIsRead(true);
         }
         const fullName = firstName + ' ' + lastName
@@ -39,15 +38,16 @@ export default function Chat() {
                 <View style={styles.buttontext}>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={{fontWeight: '500', fontSize: 15}} >{newFullName}</Text>
-                        {path==='true' ? <Entypo name="graduation-cap" size={24} color={globalColors.orange.title.colour} style={{marginLeft: 5}}/> : null}
+                        {path==='true' ? <Entypo name="graduation-cap" size={24} 
+                        color={globalColors.orange.title.colour} style={{marginLeft: 5}}/> : null}
                     </View>
-                    <Text style={{ marginRight: 60, marginTop: 8, fontWeight: read === 'false' ? 'bold' : 'normal' }}>{lastMessageSentBy === 'me' ? 'You: ' : ''}{lastMessage}</Text>
+                    <Text style={{ marginRight: 60, marginTop: 8, 
+                        ontWeight: read === 'false' ? 'bold' : 'normal' }}>{lastMessageSentBy === 'me' ? 'You: ' : ''}{lastMessage}</Text>
                 </View>
                 <Text style={styles.datetime}>{dateAndTime}</Text>
                 <AntDesign name="right" size={24} color={globalColors.grey.greyarrow.colour} style={styles.arrow}/>
         </TouchableOpacity>
-    );
-    }
+    )};
 
     return(
 
@@ -167,7 +167,6 @@ const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     bottombar: {
@@ -218,7 +217,6 @@ const styles = StyleSheet.create ({
     },
     chatbutton: {
         height: 80,
-        //marginTop: 50,
         marginLeft: 21,
         marginRight: 21,
         borderBottomColor: globalColors.grey.outline.colour,
@@ -247,6 +245,5 @@ const styles = StyleSheet.create ({
         position: 'absolute',
         alignItems: 'flex-end',
         right: 5,
-        //paddingTop: 3
     }
 })

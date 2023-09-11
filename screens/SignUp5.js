@@ -14,6 +14,7 @@ export default function SignUp5({ route }) {
       navigation.navigate('Login');
       console.log("Log in button pressed");
     };
+    
     const handleSignUp6 = () => {
         if (email.trim() == '') {
             Alert.alert('Please enter your email address');
@@ -24,13 +25,14 @@ export default function SignUp5({ route }) {
           Alert.alert('Please enter a valid email address');
         }
     };
+
     return(
       <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
       enableOnAndroid={true}
       resetScrollToCoords={{ x: 0, y: 0 }}
       scrollEnabled={true}
       keyboardShouldPersistTaps="handled"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}>
       <View style={styles.bigbox}>
         <View style={styles.title}>
@@ -45,8 +47,7 @@ export default function SignUp5({ route }) {
               value1={email}
               onChangeText={setEmail}
               autoCapitalize='none'
-              keyboardType='email-address'
-          />
+              keyboardType='email-address'/>
         </View>
         <View style={styles.next}>
           <TouchableOpacity onPress={handleSignUp6}>
@@ -61,14 +62,12 @@ export default function SignUp5({ route }) {
         </View>
       </View>
       </KeyboardAwareScrollView>
-    );
-  }
+    )};
   
   const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.orange.background.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     title: {
@@ -129,7 +128,6 @@ export default function SignUp5({ route }) {
     signupLink: {
       color: globalColors.maincolors.white.colour,
       textDecorationLine: 'underline',
-      //marginLeft: 5,
       fontSize: 14,
     },
   })

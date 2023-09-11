@@ -60,7 +60,6 @@ export default function SignUp4({ route }) {
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.orange.background.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     title: {
@@ -118,7 +117,6 @@ export default function SignUp4({ route }) {
     signupLink: {
       color: globalColors.maincolors.white.colour,
       textDecorationLine: 'underline',
-      //marginLeft: 5,
       fontSize: 14,
     },
   })

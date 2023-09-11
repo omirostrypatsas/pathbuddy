@@ -1,7 +1,6 @@
-import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
+import { React } from 'react';
+import { StyleSheet, View, Text, Modal, TouchableOpacity } from 'react-native';
 import { globalColors } from '../colors';
-import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 export default function LogoutModal({ isVisible, toggleModal }) {
@@ -20,7 +19,8 @@ export default function LogoutModal({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, height: 100, paddingTop:20, width: 230, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, 
+            height: 100, paddingTop:20, width: 230, borderRadius: 10 }}>
             <Text style={styles.title}>Log out of your account?</Text>
             <View style={styles.buttons}>
                 <TouchableOpacity style= {styles.cancel} onPress={toggleModal}>

@@ -1,13 +1,9 @@
 import { React, useState } from 'react';
-import { StyleSheet, View, Text, Button, Modal, TouchableOpacity, Switch } from 'react-native';
+import { StyleSheet, View, Text, Modal, TouchableOpacity, Switch } from 'react-native';
 import { globalColors } from '../colors';
-import { TextInput } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
 export default function Notifications({ isVisible, toggleModal }) {
 
-    const navigation = useNavigation();
     const [switchMessage, setSwitchMessage] = useState('');
     const [switchPost, setSwitchPost] = useState('');
     const [switchBuddyUp, setSwitchBuddyUp] = useState('');
@@ -32,7 +28,8 @@ export default function Notifications({ isVisible, toggleModal }) {
       onRequestClose={toggleModal}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, height: 350, width: 300, borderRadius: 10 }}>
+        <View style={{ backgroundColor: globalColors.orange.background.colour, padding: 20, 
+          height: 350, width: 300, borderRadius: 10 }}>
             <Text style={{fontWeight: '700', marginTop: 10}}>Manage Notifications</Text>
             <View style={{ flexDirection: 'row', marginTop:30 }}>
                 <Text style={{ marginRight: 70, paddingTop: 8 }}>Message notifications</Text>

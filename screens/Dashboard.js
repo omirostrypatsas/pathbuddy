@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { globalColors } from "../colors";
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import {NavigationContainer} from '@react-navigation/native'
 import BottomBar from '../components/BottomBar';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 
@@ -12,10 +11,6 @@ const { width } = Dimensions.get('screen');
 export default function Dashboard() {
 
     const navigation = useNavigation();
-
-    const handleLogout = () => {
-        console.log("Log out button pressed");
-    };
 
     const settingoption1 =({ icon, title, caption}) => (
         <TouchableOpacity style={styles.settingbutton}>
@@ -90,7 +85,6 @@ const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     bottombar: {
@@ -103,7 +97,6 @@ const styles = StyleSheet.create ({
         width: width
     },
     titlebox: {
-        //flex: 1,
         alignItems: 'center',
         marginTop: -25,
         marginBottom: 30
@@ -147,7 +140,6 @@ const styles = StyleSheet.create ({
     icon: {
         marginLeft: 8,
         marginTop: 5
-        //verticalAlign: 'center'
     },
     arrow: {
         position: 'absolute',

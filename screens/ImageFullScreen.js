@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ImageBackground, Dimensions, StyleSheet, Image } from "react-native";
+import { View, ImageBackground, Dimensions, StyleSheet } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from "@expo/vector-icons";
 import { globalColors } from "../colors";

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Button, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { FontAwesome, Feather } from '@expo/vector-icons';
 import { globalColors } from '../colors';
@@ -10,9 +10,7 @@ const HandlingImage = () => {
     const [image, setImage] = useState(null);
     const [image2, setImage2] = useState(null);
   
-    // Function to handle image selection from library
     const pickImage = async () => {
-        console.log('geia')
       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== 'granted') {
         alert('Permission to access media library is required!');
@@ -28,10 +26,8 @@ const HandlingImage = () => {
   
       if (!result.canceled) {
         setImage(result.assets[0].uri);
-      }
-    };
+      }};
   
-    // Function to handle taking a picture with the camera
     const takePicture = async () => {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
@@ -47,8 +43,7 @@ const HandlingImage = () => {
   
       if (!result.canceled) {
         setImage2(result.assets[0].uri);
-      }
-    };
+      }};
   
     return (
       <View style={styles.container}>
@@ -71,8 +66,7 @@ const HandlingImage = () => {
         </TouchableOpacity>
         )}
       </View>
-    );
-  };
+    )};
   
   const styles = StyleSheet.create({
     container: {
@@ -81,16 +75,13 @@ const HandlingImage = () => {
       padding: 10,
     },
     image: {
-      //position: 'absolute',
         height: width,
         width: width,
       resizeMode: 'contain',
       marginTop: -200,
       marginLeft: -10
-      //marginLeft: 25
     },
     button1: {
-      //position: 'absolute',
       marginTop: 50,
       marginLeft: 15,
       backgroundColor: globalColors.orange.background.colour,
@@ -99,7 +90,6 @@ const HandlingImage = () => {
       height: 60,
     },
     button2: {
-      //position: 'absolute',
       marginTop: 50,
       marginLeft: 15,
       right: 10,

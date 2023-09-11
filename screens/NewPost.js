@@ -4,7 +4,6 @@ import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
-import ImageUpload from '../components/HandlingImage';
 import { Ionicons } from '@expo/vector-icons';
 import HandlingImage from '../components/HandlingImage';
 
@@ -16,11 +15,9 @@ export default function NewPost() {
     const [caption, setCaption] = useState(null);
     const textInputRef = useRef(null);
     useEffect(() => {
-        // Focus on the TextInput and open the keyboard when the screen is loaded
         textInputRef.current.focus();
 
         if (Platform.OS === 'android') {
-            // For Android, we use the interaction manager to delay the keyboard show
             const timeoutId = setTimeout(() => {
                 Keyboard.dismiss();
                 textInputRef.current.focus();
@@ -34,10 +31,7 @@ export default function NewPost() {
 
     return(
         <View style={styles.bigbox}>
-                    <ScrollView
-            //contentContainerStyle={styles.container}
-            keyboardShouldPersistTaps="handled" // This prevents taps from dismissing keyboard
-        >
+            <ScrollView keyboardShouldPersistTaps="handled">
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backarrow}>
                 <Ionicons name="arrow-back" size={24} colour={globalColors.maincolors.black.color}/>
             </TouchableOpacity>
@@ -69,7 +63,6 @@ const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.maincolors.white.colour,
-        //marginTop: 324,
         marginBottom: 0 
     },
     backarrow: {
@@ -88,7 +81,6 @@ const styles = StyleSheet.create ({
     },
     postbutton: {
         position: 'absolute',
-        //alignItems: 'flex-end',
         right: 15,
         marginTop: 40,
         height: 35,
@@ -101,14 +93,11 @@ const styles = StyleSheet.create ({
         textAlign: 'center',
         color: globalColors.maincolors.white.colour,
         fontSize: 16,
-        //paddingTop: 5,
       },
     handleimage: {
-        //flex: 1,
         alignItems: 'center',
     },
     textinput: {
-        //flex: 1,
         marginTop: 20,
         left: 10,
         maxWidth: width - 20,

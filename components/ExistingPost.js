@@ -4,13 +4,11 @@ import { globalColors } from "../colors";
 import { Entypo } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import ImageFullScreen from '../screens/ImageFullScreen';
 
 const { width } = Dimensions.get('screen');
 
 const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposted, username }) => {
 
-    const [isModalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
     const toggleModal = () => {
         navigation.navigate('ImageFullScreen', {image: image});
@@ -41,8 +39,7 @@ const Post = ({ profilepic, firstName, lastName, path, caption, image, timeposte
                 <Image source={image} style={styles.postimage}/>
             </TouchableOpacity>
         </View>
-    );
-};
+    )};
 
 const styles = StyleSheet.create({
     post: {
@@ -60,11 +57,9 @@ const styles = StyleSheet.create({
         borderRadius: 50
     },
     postimage: {
-        //right: 20,
         height: 235,
         marginTop: 10,
         width: width - 40,
-        //marginLeft: 20,
         marginBottom: 26,
         resizeMode: 'contain'
     },

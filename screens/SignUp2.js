@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, Alert, Image } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { globalColors } from "../colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -10,18 +10,18 @@ export default function SignUp2({ route }) {
   const navigation = useNavigation();
   const {firstname} = route.params
   const [lastname, setLastName] = useState('');
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
+
   const handleLogin = () => {
     navigation.navigate('Login');
     console.log("Log in button pressed");
   };
+
   const handleSignUp3 = () => {
     if (validateLastName(lastname)) {
       navigation.navigate('SignUp3', { firstname: firstname, lastname: lastname });
     }
   };
+
   const validateLastName = (lastname) => {
     const lettersPattern = /^[A-Za-z]+$/;
     if (!lastname.trim()) {
@@ -34,13 +34,14 @@ export default function SignUp2({ route }) {
       return true;
     }
   };
+
   return(
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}
       enableOnAndroid={true}
       resetScrollToCoords={{ x: 0, y: 0 }}
       scrollEnabled={true}
       keyboardShouldPersistTaps="handled"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Use 'height' for Android
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}>
     <View style={styles.bigbox}>
       <View style={styles.title}>
@@ -54,8 +55,7 @@ export default function SignUp2({ route }) {
             placeholderTextColor={globalColors.maincolors.black.colour}
             value1={lastname}
             onChangeText={setLastName}
-            autoCapitalize='none'
-        />
+            autoCapitalize='none'/>
       </View>
       <View style={styles.next}>
         <TouchableOpacity onPress={handleSignUp3}>
@@ -77,7 +77,6 @@ const styles = StyleSheet.create ({
   bigbox: {
       flex: 1,
       backgroundColor: globalColors.orange.background.colour,
-      //marginTop: 324,
       marginBottom: 0 
     },
   title: {
@@ -138,7 +137,6 @@ const styles = StyleSheet.create ({
   signupLink: {
     color: globalColors.maincolors.white.colour,
     textDecorationLine: 'underline',
-    //marginLeft: 5,
     fontSize: 14,
   },
 })

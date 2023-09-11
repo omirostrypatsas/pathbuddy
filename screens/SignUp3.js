@@ -54,8 +54,7 @@ export default function SignUp3({ route }) {
               value={dob || new Date()}
               mode="date"
               display="default"
-              onChange={handleDateChange}
-          />
+              onChange={handleDateChange}/>
           )}
         </View>
         <View style={styles.next}>
@@ -70,14 +69,12 @@ export default function SignUp3({ route }) {
           </TouchableOpacity>
         </View>
       </View>
-    );
-  }
+    )};
   
   const styles = StyleSheet.create ({
     bigbox: {
         flex: 1,
         backgroundColor: globalColors.orange.background.colour,
-        //marginTop: 324,
         marginBottom: 0 
       },
     title: {
@@ -146,7 +143,6 @@ export default function SignUp3({ route }) {
     signupLink: {
       color: globalColors.maincolors.white.colour,
       textDecorationLine: 'underline',
-      //marginLeft: 5,
       fontSize: 14,
     },
   })
