@@ -42,7 +42,7 @@ export default function Chat() {
                         color={globalColors.orange.title.colour} style={{marginLeft: 5}}/> : null}
                     </View>
                     <Text style={{ marginRight: 60, marginTop: 8, 
-                        ontWeight: read === 'false' ? 'bold' : 'normal' }}>{lastMessageSentBy === 'me' ? 'You: ' : ''}{lastMessage}</Text>
+                        fontWeight: read === 'false' ? 'bold' : 'normal' }}>{lastMessageSentBy === 'me' ? 'You: ' : ''}{lastMessage}</Text>
                 </View>
                 <Text style={styles.datetime}>{dateAndTime}</Text>
                 <AntDesign name="right" size={24} color={globalColors.grey.greyarrow.colour} style={styles.arrow}/>
